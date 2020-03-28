@@ -9,7 +9,21 @@ import com.inventory.model.ProductPrice;
  */
 public class ProductUtils {
 
-    public static Product parseToProduct(ProductRequestDTO requestDTO) {
+    public static Product parseToProduct(ProductRequestDTO requestDTO,ProductPrice productPrice) {
+
+        Product product = new Product();
+        product.setProductCategory(requestDTO.getProductCategory());
+        product.setProductCode(requestDTO.getProductCode());
+        product.setProductName(requestDTO.getProductName());
+        product.setProductDescription(requestDTO.getProductDescription());
+        product.setProductQuantity(requestDTO.getProductQuantity());
+        product.setStatus(requestDTO.getStatus());
+        product.setProductPrice(productPrice);
+
+        return product;
+    }
+
+    public static ProductPrice parseToProductPrice(ProductRequestDTO requestDTO) {
 
         ProductPrice productPrice = new ProductPrice();
         productPrice.setCostPrice(requestDTO.getPriceRequestDTO().getCostPrice());
@@ -18,14 +32,6 @@ public class ProductUtils {
         productPrice.setSellingPrice(requestDTO.getPriceRequestDTO().getSellingPrice());
         productPrice.setStatus(requestDTO.getPriceRequestDTO().getStatus());
 
-        Product product = new Product();
-        product.setProductCategory(requestDTO.getProductCategory());
-        product.setProductCode(requestDTO.getProductCode());
-        product.setProductName(requestDTO.getProductName());
-        product.setProductDescription(requestDTO.getProductDescription());
-        product.setProductQuantity(requestDTO.getProductQuantity());
-        product.setProductPrice(productPrice);
-
-        return product;
+        return productPrice;
     }
 }

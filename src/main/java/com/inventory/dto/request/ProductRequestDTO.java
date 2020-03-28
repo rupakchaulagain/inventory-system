@@ -29,6 +29,8 @@ public class ProductRequestDTO implements Serializable {
 
     private String productDescription;
 
+    private Character status;
+
     private ProductPriceRequestDTO priceRequestDTO;
 
 }

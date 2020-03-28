@@ -8,15 +8,19 @@ import com.inventory.dto.request.ProductUpdateRequestDTO;
 import com.inventory.dto.response.ProductMinimalResponseDTO;
 import com.inventory.dto.response.ProductResponseDTO;
 import com.inventory.model.Product;
+import com.inventory.model.ProductPrice;
+import com.inventory.repository.ProductPriceRepository;
 import com.inventory.repository.ProductRepository;
 import com.inventory.service.ProductService;
-import com.inventory.utils.Product.ProductUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
+import static com.inventory.utils.Product.ProductUtils.parseToProduct;
+import static com.inventory.utils.Product.ProductUtils.parseToProductPrice;
 
 /**
  * @author Rupak
@@ -27,15 +31,20 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
+    private final ProductPriceRepository productPriceRepository;
 
-    public ProductServiceImpl(ProductRepository productRepository) {
+    public ProductServiceImpl(ProductRepository productRepository, ProductPriceRepository productPriceRepository) {
         this.productRepository = productRepository;
+        this.productPriceRepository = productPriceRepository;
     }
 
     @Override
     public void save(ProductRequestDTO productRequestDTO) {
 
-        Product product= ProductUtils.parseToProduct(productRequestDTO);
+        ProductPrice productPrice= parseToProductPrice(productRequestDTO);
+        productPriceRepository.save(productPrice);
+
+        Product product= parseToProduct(productRequestDTO,productPrice);
         productRepository.save(product);
 
     }
