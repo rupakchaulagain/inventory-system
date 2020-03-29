@@ -2,9 +2,9 @@ package com.inventory.service;
 
 import com.inventory.dto.commons.DeleteRequestDTO;
 import com.inventory.dto.commons.DropDownResponseDTO;
-import com.inventory.dto.request.ProductRequestDTO;
-import com.inventory.dto.request.ProductSearchRequestDTO;
-import com.inventory.dto.request.ProductUpdateRequestDTO;
+import com.inventory.dto.request.product.ProductRequestDTO;
+import com.inventory.dto.request.product.ProductSearchRequestDTO;
+import com.inventory.dto.request.product.ProductUpdateRequestDTO;
 import com.inventory.dto.response.ProductMinimalResponseDTO;
 import com.inventory.dto.response.ProductResponseDTO;
 import org.springframework.data.domain.Pageable;
@@ -26,7 +26,7 @@ public interface ProductService {
 
     ProductResponseDTO fetchDetails(Long id);
 
-    List<DropDownResponseDTO> fetchDepartmentForDropdown();
-
-
+    List<DropDownResponseDTO> fetchProductForDropdown();
+    
+    List<DropDownResponseDTO> fetchActiveDropDownList();
 }

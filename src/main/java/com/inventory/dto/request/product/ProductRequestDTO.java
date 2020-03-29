@@ -1,12 +1,7 @@
-package com.inventory.dto.request;
+package com.inventory.dto.request.product;
 
-import com.inventory.model.ProductPrice;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import java.io.Serializable;
 
 /**

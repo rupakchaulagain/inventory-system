@@ -33,5 +33,7 @@ public class SwaggerConstants {
         String SEARCH_OPERATION = "Search product according to given request parameters";
         String DETAILS_OPERATION = "Fetch product details by its id";
         String FETCH_DETAILS_FOR_DROPDOWN = "Fetch minimal product details (id and name) for dropdown";
+        String FETCH_PRODUCT_FOR_DROP_DOWN_OPERATION = "Fetch minimal product details (id and name) for dropdown";
+        String FETCH_ACTIVE_PRODUCT_FOR_DROP_DOWN_OPERATION = "Fetch minimal active product details (id and name)";
     }
 }

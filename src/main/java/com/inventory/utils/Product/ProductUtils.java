@@ -1,6 +1,6 @@
 package com.inventory.utils.Product;
 
-import com.inventory.dto.request.ProductRequestDTO;
+import com.inventory.dto.request.product.ProductRequestDTO;
 import com.inventory.model.Product;
 import com.inventory.model.ProductPrice;
 
@@ -13,6 +13,7 @@ public class ProductUtils {
 
         Product product = new Product();
         product.setProductCategory(requestDTO.getProductCategory());
+        product.setProductType(requestDTO.getProductType());
         product.setProductCode(requestDTO.getProductCode());
         product.setProductName(requestDTO.getProductName());
         product.setProductDescription(requestDTO.getProductDescription());

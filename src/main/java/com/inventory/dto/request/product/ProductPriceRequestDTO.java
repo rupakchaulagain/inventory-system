@@ -1,4 +1,4 @@
-package com.inventory.dto.request;
+package com.inventory.dto.request.product;
 
 import lombok.*;
 
