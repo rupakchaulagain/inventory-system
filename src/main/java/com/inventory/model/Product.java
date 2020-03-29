@@ -26,8 +26,11 @@ public class Product extends Auditable<String> implements Serializable {
     @Column(name = "product_name", nullable = false)
     private String productName;
 
-    @Column(name = "product_Category", nullable = false)
+    @Column(name = "product_category", nullable = false)
     private String productCategory;
+
+    @Column(name = "product_type", nullable = true)
+    private String productType;
 
     @Column(name = "product_code", nullable = false)
     private String productCode;

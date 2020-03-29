@@ -7,6 +7,7 @@ import com.inventory.dto.request.ProductSearchRequestDTO;
 import com.inventory.dto.request.ProductUpdateRequestDTO;
 import com.inventory.dto.response.ProductMinimalResponseDTO;
 import com.inventory.dto.response.ProductResponseDTO;
+import com.inventory.exception.DataDuplicationException;
 import com.inventory.model.Product;
 import com.inventory.model.ProductPrice;
 import com.inventory.repository.ProductPriceRepository;
@@ -19,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import static com.inventory.constants.ErrorMessageConstants.NAME_DUPLICATION_MESSAGE;
 import static com.inventory.utils.Product.ProductUtils.parseToProduct;
 import static com.inventory.utils.Product.ProductUtils.parseToProductPrice;
 
@@ -41,11 +43,23 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void save(ProductRequestDTO productRequestDTO) {
 
+
+        Long count=productRepository.validateDuplicity(productRequestDTO);
+
+        validateProductByCategoryAndType(count, productRequestDTO.getProductName());
         ProductPrice productPrice= parseToProductPrice(productRequestDTO);
         productPriceRepository.save(productPrice);
 
         Product product= parseToProduct(productRequestDTO,productPrice);
         productRepository.save(product);
+
+    }
+
+    private void validateProductByCategoryAndType(Long count, String productName) {
+
+        if (count.intValue() > 0)
+            throw new DataDuplicationException(
+                    String.format(NAME_DUPLICATION_MESSAGE, Product.class.getSimpleName(), productName));
 
     }
 

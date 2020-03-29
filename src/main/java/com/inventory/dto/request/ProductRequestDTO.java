@@ -21,6 +21,8 @@ public class ProductRequestDTO implements Serializable {
 
     private String productName;
 
+    private String productType;
+
     private String productCategory;
 
     private String productCode;
