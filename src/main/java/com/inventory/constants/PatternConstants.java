@@ -1,8 +1,5 @@
 package com.inventory.constants;
 
-/**
- * @author smriti on 2019-08-16
- */
 public class PatternConstants {
     public static final String ACTIVE_INACTIVE_PATTERN = "^[YN]{1}$";
 

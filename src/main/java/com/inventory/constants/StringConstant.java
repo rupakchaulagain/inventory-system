@@ -1,8 +1,5 @@
 package com.inventory.constants;
 
-/**
- * @author smriti on 2019-08-27
- */
 public class StringConstant {
 
     //A

@@ -1,7 +1,6 @@
 package com.inventory.utils.commons;
 
 import com.inventory.constants.StringConstant;
-import com.inventory.constants.UtilityConfigConstants;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
