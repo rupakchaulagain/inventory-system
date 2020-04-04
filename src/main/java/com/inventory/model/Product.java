@@ -21,7 +21,7 @@ public class Product extends Auditable<String> implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Column(name = "product_name", nullable = false)
     private String productName;

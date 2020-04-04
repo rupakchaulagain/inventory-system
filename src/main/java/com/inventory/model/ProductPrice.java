@@ -19,7 +19,7 @@ public class ProductPrice implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Column(name = "cost_price")
     private Double costPrice;

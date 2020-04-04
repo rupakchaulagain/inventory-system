@@ -21,7 +21,7 @@ public class ProductImage implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Column(name = "file_uri")
     private String fileUri;
