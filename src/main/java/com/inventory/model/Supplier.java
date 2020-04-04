@@ -19,7 +19,7 @@ public class Supplier implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -41,4 +41,7 @@ public class Supplier implements Serializable {
 
     @Column(name = "website_url")
     private String websiteUrl;
+
+    @Column(name = "status")
+    private Character status;
 }

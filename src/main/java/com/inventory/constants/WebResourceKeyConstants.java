@@ -95,8 +95,13 @@ public class WebResourceKeyConstants {
 
     //R
 
-
+    
     //S
+    public interface SupplierConstant {
+        String BASE_SUPPLIER = "/supplier";
+    }
+
+
     public static final String SEARCH = "/search";
 
     //T

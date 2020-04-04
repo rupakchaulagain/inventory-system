@@ -30,4 +30,6 @@ public class ProductRequestDTO implements Serializable {
 
     private ProductPriceRequestDTO priceRequestDTO;
 
+    private Long supplierId;
+
 }

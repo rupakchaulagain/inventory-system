@@ -13,6 +13,7 @@ import com.inventory.model.Product;
 import com.inventory.model.ProductPrice;
 import com.inventory.repository.ProductPriceRepository;
 import com.inventory.repository.ProductRepository;
+import com.inventory.repository.SupplierRepository;
 import com.inventory.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
@@ -36,23 +37,30 @@ public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
     private final ProductPriceRepository productPriceRepository;
+    private final SupplierRepository supplierRepository;
 
-    public ProductServiceImpl(ProductRepository productRepository, ProductPriceRepository productPriceRepository) {
+    public ProductServiceImpl(ProductRepository productRepository, ProductPriceRepository productPriceRepository, SupplierRepository supplierRepository) {
         this.productRepository = productRepository;
         this.productPriceRepository = productPriceRepository;
+        this.supplierRepository = supplierRepository;
     }
 
     @Override
     public void save(ProductRequestDTO productRequestDTO) {
 
-
-        Long count=productRepository.validateDuplicity(productRequestDTO);
+        Long count = productRepository.validateDuplicity(productRequestDTO);
 
         validateProductByCategoryAndType(count, productRequestDTO.getProductName());
-        ProductPrice productPrice= parseToProductPrice(productRequestDTO);
+
+        ProductPrice productPrice = parseToProductPrice(productRequestDTO);
+
+        com.inventory.model.Supplier supplier = supplierRepository.findSupplierBySupplierId(productRequestDTO.getSupplierId());
+
         productPriceRepository.save(productPrice);
 
-        Product product= parseToProduct(productRequestDTO,productPrice);
+        Product product = parseToProduct(productRequestDTO, productPrice);
+
+        product.setSupplier(supplier);
         productRepository.save(product);
 
     }

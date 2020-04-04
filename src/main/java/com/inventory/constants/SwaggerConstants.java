@@ -36,4 +36,17 @@ public class SwaggerConstants {
         String FETCH_PRODUCT_FOR_DROP_DOWN_OPERATION = "Fetch minimal product details (id and name) for dropdown";
         String FETCH_ACTIVE_PRODUCT_FOR_DROP_DOWN_OPERATION = "Fetch minimal active product details (id and name)";
     }
+
+    //S
+    public interface SupplierConstant {
+        String BASE_API_VALUE = "This is Supplier Resource";
+        String SAVE_OPERATION = "Save new supplier";
+        String UPDATE_OPERATION = "Update existing supplier details";
+        String DELETE_OPERATION = "Set supplier status as 'D' with specific remarks";
+        String SEARCH_OPERATION = "Search supplier according to given request parameters";
+        String DETAILS_OPERATION = "Fetch supplier details by its id";
+        String FETCH_DETAILS_FOR_DROPDOWN = "Fetch minimal supplier details (id and name) for dropdown";
+        String FETCH_PRODUCT_FOR_DROP_DOWN_OPERATION = "Fetch minimal supplier details (id and name) for dropdown";
+        String FETCH_ACTIVE_PRODUCT_FOR_DROP_DOWN_OPERATION = "Fetch minimal active supplier details (id and name)";
+    }
 }
