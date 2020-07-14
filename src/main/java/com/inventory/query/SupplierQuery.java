@@ -12,9 +12,11 @@ public class SupplierQuery {
 
     public static Function<SupplierSearchRequestDTO, String> QUERY_TO_SEARCH_SUPPLIER = (searchRequestDTO) -> {
         return " SELECT" +
+                " s.id as id,"+
                 " s.name as supplierName," +
-                " s.phonenNumber as supplierPhoneNumber," +
-                " s.panNumber as supplierPanNumber" +
+                " s.phoneNumber as supplierPhoneNumber," +
+                " s.panNumber as supplierPanNumber," +
+                " s.address as supplierAddress" +
                 " FROM Supplier s" +
                 GET_WHERE_CLAUSE_FOR_SEARCH_SUPPLIER(searchRequestDTO);
     };
@@ -25,10 +27,11 @@ public class SupplierQuery {
                 " s.status!='D'";
 
         if (!Objects.isNull(searchRequestDTO.getSupplierName()))
-            whereClause += " AND s.name= " + searchRequestDTO.getSupplierName();
+            whereClause += " AND s.name='" + searchRequestDTO.getSupplierName()+"'";
+
+        if (!Objects.isNull(searchRequestDTO.getSupplierPanNumber()))
+            whereClause += " AND s.panNumber='" + searchRequestDTO.getSupplierPanNumber()+"'";;
 
         return whereClause;
     }
-
-    ;
 }

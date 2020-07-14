@@ -10,7 +10,8 @@ import java.io.Serializable;
 @Getter
 public class SupplierSearchRequestDTO implements Serializable {
 
-
     private String supplierName;
+
+    private String supplierPanNumber;
 
 }

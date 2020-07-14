@@ -14,6 +14,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class SupplierMinimalResponseDTO implements Serializable {
 
+    private Long id;
+
     private String supplierName;
 
     private String supplierPanNumber;
