@@ -1,23 +1,26 @@
 package com.inventory.controller;
 
-import com.inventory.constants.SwaggerConstants;
 import com.inventory.dto.request.supplier.SupplierRequestDTO;
+import com.inventory.dto.request.supplier.SupplierSearchRequestDTO;
 import com.inventory.service.SupplierService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.net.URI;
 
+import static com.inventory.constants.SwaggerConstants.ProductConstant.SEARCH_OPERATION;
 import static com.inventory.constants.SwaggerConstants.SupplierConstant.BASE_API_VALUE;
+import static com.inventory.constants.SwaggerConstants.SupplierConstant.SAVE_OPERATION;
 import static com.inventory.constants.WebResourceKeyConstants.API_V1;
+import static com.inventory.constants.WebResourceKeyConstants.SEARCH;
 import static com.inventory.constants.WebResourceKeyConstants.SupplierConstant.BASE_SUPPLIER;
 import static org.springframework.http.ResponseEntity.created;
+import static org.springframework.http.ResponseEntity.ok;
 
 /**
  * @author Rupak
@@ -34,10 +37,20 @@ public class SupplierController {
     }
 
     @PostMapping
-    @ApiOperation(SwaggerConstants.SupplierConstant.SAVE_OPERATION)
+    @ApiOperation(SAVE_OPERATION)
     public ResponseEntity<?> save(@Valid @RequestBody SupplierRequestDTO requestDTO) {
         supplierService.save(requestDTO);
         return created(URI.create(API_V1 + BASE_SUPPLIER)).build();
+    }
+
+    @PutMapping(SEARCH)
+    @ApiOperation(SEARCH_OPERATION)
+    public ResponseEntity<?> search(@RequestBody SupplierSearchRequestDTO supplierSearchRequestDTO,
+                                    @RequestParam("page") int page,
+                                    @RequestParam("size") int size) {
+
+        Pageable pageable = PageRequest.of(page, size);
+        return ok(supplierService.search(supplierSearchRequestDTO, pageable));
     }
 
 }
