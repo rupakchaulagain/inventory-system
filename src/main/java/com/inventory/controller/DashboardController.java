@@ -10,6 +10,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class DashboardController {
 
+    @GetMapping("/login")
+    public String login(Model model){
+
+        System.out.println("login page is called.....");
+
+        return "login";
+    }
+
     @GetMapping("/")
     public String index(Model model){
 

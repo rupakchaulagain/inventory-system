@@ -1,6 +1,7 @@
 package com.inventory.query;
 
 import com.inventory.dto.request.supplier.SupplierSearchRequestDTO;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Objects;
 import java.util.function.Function;
@@ -26,10 +27,10 @@ public class SupplierQuery {
         String whereClause = " WHERE" +
                 " s.status!='D'";
 
-        if (!Objects.isNull(searchRequestDTO.getSupplierName()))
+        if (!StringUtils.isEmpty(searchRequestDTO.getSupplierName()))
             whereClause += " AND s.name='" + searchRequestDTO.getSupplierName()+"'";
 
-        if (!Objects.isNull(searchRequestDTO.getSupplierPanNumber()))
+        if (!StringUtils.isEmpty(searchRequestDTO.getSupplierPanNumber()))
             whereClause += " AND s.panNumber='" + searchRequestDTO.getSupplierPanNumber()+"'";;
 
         return whereClause;
