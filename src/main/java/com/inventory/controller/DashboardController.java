@@ -26,4 +26,20 @@ public class DashboardController {
         return "product";
     }
 
+    @GetMapping("/supplier")
+    public String supplier(Model model){
+
+        System.out.println("supplier page is called.....");
+
+        return "supplier";
+    }
+
+    @GetMapping("/test")
+    public String test(Model model){
+
+        System.out.println("test page is called.....");
+
+        return "test";
+    }
+
 }
