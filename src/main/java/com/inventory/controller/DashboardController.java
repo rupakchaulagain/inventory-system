@@ -16,9 +16,14 @@ public class DashboardController {
         System.out.println("index page is called.....");
 
         return "index";
+    }
 
+    @GetMapping("/product")
+    public String product(Model model){
 
+        System.out.println("product page is called.....");
 
+        return "product";
     }
 
 }
