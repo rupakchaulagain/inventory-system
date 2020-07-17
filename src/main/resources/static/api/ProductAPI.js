@@ -1,4 +1,3 @@
-
 function getSupplierDropdown(page, size, searchKey) {
 
     var search = {
@@ -21,7 +20,7 @@ function getSupplierDropdown(page, size, searchKey) {
 
             console.log("SUCCESS : ", data);
 
-            alert(JSON.stringify(data, null, 4));
+            // alert(JSON.stringify(data, null, 4));
 
         },
         error: function (e) {
@@ -41,6 +40,65 @@ function getSupplierDropdown(page, size, searchKey) {
 
         }
     });
+
+
+}
+
+$(document).ready(function () {
+    $("#productSubmitBtn").click(function () {
+
+        saveProduct();
+    });
+})
+
+function saveProduct() {
+
+    var product= getProductFormData();
+
+
+    $.ajax({
+        type: "PUT",
+        contentType: "application/json",
+        url: "/api/v1/product/save",
+        data: JSON.stringify(product),
+        dataType: 'json',
+        cache: false,
+        timeout: 600000,
+        success: function (data) {
+
+            var json = "<h4>Ajax Response</h4>&lt;pre&gt;"
+                + JSON.stringify(data, null, 4) + "&lt;/pre&gt;";
+            $('#supplier-data').html(json);
+
+            console.log("SUCCESS : ", data);
+
+            // alert(JSON.stringify(data, null, 4));
+
+        },
+        error: function (e) {
+
+
+            console.log("ERROR : ", e);
+
+
+            // var json = "<h4>Ajax Response</h4>&lt;pre&gt;"
+            //     + e.responseText + "&lt;/pre&gt;";
+            // $('#feedback').html(json);
+            //
+            // console.log("ERROR : ", e);
+            // $("#btn-search").prop("disabled", false);
+
+            alert(JSON.stringify(e, null, 4));
+
+        }
+    });
+
+}
+function getProductFormData(){
+    var data = $("#saveProductForm").serialize();
+    alert(data);
+    alert(data.toString());
+
 
 
 }

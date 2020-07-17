@@ -27,7 +27,7 @@ function getSupplierActiveDropdown() {
 
             console.log("SUCCESS : ", data);
 
-            alert(JSON.stringify(data, null, 4));
+            // alert(JSON.stringify(data, null, 4));
 
         },
         error: function (e) {
