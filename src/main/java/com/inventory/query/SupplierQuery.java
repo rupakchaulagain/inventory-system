@@ -11,6 +11,15 @@ import java.util.function.Function;
  */
 public class SupplierQuery {
 
+    public static final String QUERY_TO_FETCH_SUPPLIER_FOR_DROPDOWN =
+            "SELECT" +
+                    " s.id as value," +
+                    " s.name as label" +
+                    " FROM Supplier s" +
+                    " WHERE s.status != 'D'" +
+                    " ORDER BY s.name ASC";
+
+
     public static Function<SupplierSearchRequestDTO, String> QUERY_TO_SEARCH_SUPPLIER = (searchRequestDTO) -> {
         return " SELECT" +
                 " s.id as id,"+

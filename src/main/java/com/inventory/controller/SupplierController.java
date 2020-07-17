@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 
+import static com.inventory.constants.SwaggerConstants.ProductConstant.FETCH_DETAILS_FOR_DROPDOWN;
 import static com.inventory.constants.SwaggerConstants.ProductConstant.SEARCH_OPERATION;
 import static com.inventory.constants.SwaggerConstants.SupplierConstant.BASE_API_VALUE;
 import static com.inventory.constants.SwaggerConstants.SupplierConstant.SAVE_OPERATION;
-import static com.inventory.constants.WebResourceKeyConstants.API_V1;
-import static com.inventory.constants.WebResourceKeyConstants.SEARCH;
+import static com.inventory.constants.WebResourceKeyConstants.*;
 import static com.inventory.constants.WebResourceKeyConstants.SupplierConstant.BASE_SUPPLIER;
 import static org.springframework.http.ResponseEntity.created;
 import static org.springframework.http.ResponseEntity.ok;
@@ -51,6 +51,12 @@ public class SupplierController {
 
         Pageable pageable = PageRequest.of(page, size);
         return ok(supplierService.search(supplierSearchRequestDTO, pageable));
+    }
+
+    @GetMapping(ACTIVE + MIN)
+    @ApiOperation(FETCH_DETAILS_FOR_DROPDOWN)
+    public ResponseEntity<?> fetchActiveDropDownList() {
+        return ok(supplierService.fetchActiveDropDownList());
     }
 
 }

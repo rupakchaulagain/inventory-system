@@ -1,5 +1,6 @@
 package com.inventory.service;
 
+import com.inventory.dto.commons.DropDownResponseDTO;
 import com.inventory.dto.request.supplier.SupplierRequestDTO;
 import com.inventory.dto.request.supplier.SupplierSearchRequestDTO;
 import com.inventory.dto.response.supplier.SupplierMinimalResponseDTO;
@@ -13,4 +14,6 @@ public interface SupplierService {
     void save(SupplierRequestDTO requestDTO);
 
     SupplierSearchResponseDTO search(SupplierSearchRequestDTO supplierSearchRequestDTO, Pageable pageable);
+
+    List<DropDownResponseDTO> fetchActiveDropDownList();
 }
