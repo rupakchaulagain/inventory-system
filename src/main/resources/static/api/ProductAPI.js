@@ -55,11 +55,12 @@ function saveProduct() {
 
     var product= getProductFormData();
 
+    alert("product api call-----")
 
     $.ajax({
-        type: "PUT",
+        type: "POST",
         contentType: "application/json",
-        url: "/api/v1/product/save",
+        url: "/api/v1/product",
         data: JSON.stringify(product),
         dataType: 'json',
         cache: false,
@@ -96,8 +97,22 @@ function saveProduct() {
 }
 function getProductFormData(){
     var data = $("#saveProductForm").serialize();
-    alert(data);
-    alert(data.toString());
+    alert("date="+data);
+
+    var formData = data.split("&");
+    var obj={};
+    for(var key in formData)
+    {
+        console.log(formData[key]);
+        obj[formData[key].split("=")[0]] = formData[key].split("=")[1];
+    }
+
+    alert(JSON.stringify(obj));
+
+    // var jsonString = JSON.stringify(data);
+    // alert("jsonString="+jsonString);
+
+    return obj;
 
 
 
