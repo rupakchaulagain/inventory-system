@@ -40,7 +40,9 @@ public class SupplierQuery {
             whereClause += " AND s.name='" + searchRequestDTO.getSupplierName()+"'";
 
         if (!StringUtils.isEmpty(searchRequestDTO.getSupplierPanNumber()))
-            whereClause += " AND s.panNumber='" + searchRequestDTO.getSupplierPanNumber()+"'";;
+            whereClause += " AND s.panNumber='" + searchRequestDTO.getSupplierPanNumber()+"'";
+
+        whereClause+=" ORDER BY s.id DESC";
 
         return whereClause;
     }

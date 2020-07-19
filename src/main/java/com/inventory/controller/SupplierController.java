@@ -11,7 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.inventory.constants.SwaggerConstants.ProductConstant.FETCH_DETAILS_FOR_DROPDOWN;
 import static com.inventory.constants.SwaggerConstants.ProductConstant.SEARCH_OPERATION;
@@ -19,7 +20,6 @@ import static com.inventory.constants.SwaggerConstants.SupplierConstant.BASE_API
 import static com.inventory.constants.SwaggerConstants.SupplierConstant.SAVE_OPERATION;
 import static com.inventory.constants.WebResourceKeyConstants.*;
 import static com.inventory.constants.WebResourceKeyConstants.SupplierConstant.BASE_SUPPLIER;
-import static org.springframework.http.ResponseEntity.created;
 import static org.springframework.http.ResponseEntity.ok;
 
 /**
@@ -40,7 +40,11 @@ public class SupplierController {
     @ApiOperation(SAVE_OPERATION)
     public ResponseEntity<?> save(@Valid @RequestBody SupplierRequestDTO requestDTO) {
         supplierService.save(requestDTO);
-        return created(URI.create(API_V1 + BASE_SUPPLIER)).build();
+//        return created(URI.create(API_V1 + BASE_SUPPLIER)).build();
+
+        Map<String, String> m = new HashMap<>();
+        m.put("key", "Saved successfully");
+        return ok(m);
     }
 
     @PutMapping(SEARCH)

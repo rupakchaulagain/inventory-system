@@ -39,7 +39,9 @@ function getSupplierActiveDropdown() {
 
 
 $(document).ready(function () {
-    $("#supplierSubmitBtn").click(function () {
+    $("#supplierSubmitBtn").click(function (e) {
+
+        e.preventDefault();
 
         saveSupplier();
     });
@@ -54,35 +56,23 @@ function saveSupplier() {
 
     $.ajax({
         type: "POST",
-        contentType: "application/json",
+        contentType: "application/json; charset=utf-8",
         url: "/api/v1/supplier",
         data: JSON.stringify(supplier),
         dataType: 'json',
         cache: false,
-        timeout: 600000,
-        success: function (data) {
+        timeout: 600000
+    }).done(function (data) {
 
-            alert(JSON.stringify(data));
+        $("#tab_1").removeClass("active");  // this deactivates the home tab
+        $("#tab_2").addClass("active");  // this activates the profile tab
 
-            // var json = "<h4>Ajax Response</h4>&lt;pre&gt;"
-            //     + JSON.stringify(data, null, 4) + "&lt;/pre&gt;";
+        getSupplierTableAPI();
 
-            console.log("SUCCESS : ", data);
-
-            $("#tab_1").removeClass("active");  // this deactivates the home tab
-            $("#tab_2").addClass("active");  // this activates the profile tab
-
-
-        },
-        error: function (e) {
-
-
-            console.log("ERROR : ", e);
-
-            alert(JSON.stringify(e, null, 4));
-
-        }
-    });
+    })
+        .fail(function (jqXHR, textStatus, errorThrown) {
+            console.log("data=====" + errorThrown);
+        });
 
 }
 
@@ -106,21 +96,21 @@ function getSupplierFormData() {
 
 }
 
+$("#tab_2")
+    .tabs()
+    .on("click", '[role="tab"]', function(e) {
+        e.preventDefault();
+       getSupplierTableAPI();
+    });
 
-$(document).ready(function () {
-
-    var searchKey = "Yamaha";
-    var page = 1;
-    var size = 30;
-
-    getSupplierTableAPI(page, size, searchKey);
-})
-
-function getSupplierTableAPI(page, size, searchKey) {
+function getSupplierTableAPI() {
 
     var search = {
         supplierName: ""
     }
+
+    var page = 1;
+    var size = 30;
 
     $.ajax({
         type: "PUT",
