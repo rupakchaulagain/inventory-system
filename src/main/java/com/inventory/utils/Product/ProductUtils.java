@@ -27,11 +27,11 @@ public class ProductUtils {
     public static ProductPrice parseToProductPrice(ProductRequestDTO requestDTO) {
 
         ProductPrice productPrice = new ProductPrice();
-        productPrice.setCostPrice(requestDTO.getPriceRequestDTO().getCostPrice());
-        productPrice.setDiscountAmount(requestDTO.getPriceRequestDTO().getDiscountAmount());
-        productPrice.setDiscountPercentage(requestDTO.getPriceRequestDTO().getDiscountPercentage());
-        productPrice.setSellingPrice(requestDTO.getPriceRequestDTO().getSellingPrice());
-        productPrice.setStatus(requestDTO.getPriceRequestDTO().getStatus());
+        productPrice.setCostPrice(requestDTO.getCostPrice());
+        productPrice.setDiscountAmount(requestDTO.getDiscountAmount());
+        productPrice.setDiscountPercentage(requestDTO.getDiscountPercentage());
+        productPrice.setSellingPrice(requestDTO.getSellingPrice());
+        productPrice.setStatus(requestDTO.getStatus());
 
         return productPrice;
     }

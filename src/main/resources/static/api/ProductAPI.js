@@ -100,14 +100,16 @@ function getProductFormData(){
     alert("date="+data);
 
     var formData = data.split("&");
-    var obj={};
+    var product={};
+    var productPrice={};
+
     for(var key in formData)
     {
         console.log(formData[key]);
-        obj[formData[key].split("=")[0]] = formData[key].split("=")[1];
+        product[formData[key].split("=")[0]] = formData[key].split("=")[1];
     }
 
-    alert(JSON.stringify(obj));
+    alert(JSON.stringify(product));
 
     // var jsonString = JSON.stringify(data);
     // alert("jsonString="+jsonString);
