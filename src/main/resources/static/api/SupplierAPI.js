@@ -91,7 +91,6 @@ function getSupplierFormData() {
 
 
     var data = decodeURIComponent($("#saveSupplierForm").serialize());
-    alert("data::\n" + data);
     var formData = data.split("&");
     var supplier = {};
 
