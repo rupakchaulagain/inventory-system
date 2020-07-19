@@ -168,7 +168,7 @@ function saveProduct() {
 
 
 function getProductFormData(){
-    var data = $("#saveProductForm").serialize();
+    var data = decodeURIComponent($("#saveProductForm").serialize());
     var formData = data.split("&");
     var product={};
 
