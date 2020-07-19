@@ -2,6 +2,8 @@ package com.inventory.dto.request.supplier;
 
 import lombok.Getter;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -11,20 +13,27 @@ import java.io.Serializable;
 @Getter
 public class SupplierRequestDTO implements Serializable {
 
+    @NotNull
+    @NotEmpty
     private String supplierName;
 
+    @NotNull
+    @NotEmpty
     private String supplierAddress;
 
-    private String supplierPan;
+    @NotNull
+    @NotEmpty
+    private String supplierPanNumber;
 
     private String supplierPhoneNumber;
 
-    private String supplierEmail;
-
     private String supplierMobileNumber;
+
+    private String supplierEmail;
 
     private String supplierWebsiteUrl;
 
-    private Character status;
+//    @NotNull
+//    private Character status;
 
 }

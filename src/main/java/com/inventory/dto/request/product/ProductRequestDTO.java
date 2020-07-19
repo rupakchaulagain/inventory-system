@@ -16,13 +16,9 @@ import java.io.Serializable;
 @Builder
 public class ProductRequestDTO implements Serializable {
 
-    @NotNull
-    @NotEmpty
-    private String productName;
 
     @NotNull
-    @NotEmpty
-    private String productType;
+    private Long supplierId;
 
     @NotNull
     @NotEmpty
@@ -30,29 +26,30 @@ public class ProductRequestDTO implements Serializable {
 
     @NotNull
     @NotEmpty
-    private String productCode;
+    private String productType;
+
+    @NotNull
+    @NotEmpty
+    private String productName;
+
+    private String productDescription;
 
     @NotNull
     @NotEmpty
     private String productQuantity;
 
-    private String productDescription;
+    @NotNull
+    private String productCostPrice;
 
     @NotNull
-    private Double costPrice;
+    private String productSellingPrice;
 
-    @NotNull
-    private Double sellingPrice;
+    private String productDiscountAmount;
 
-    private Double discountAmount;
-
-    private Double discountPercentage;
-
-    @NotNull
-    private Long supplierId;
-
-    @NotNull
-    private Character status;
+    private String productDiscountPercentage;
+//
+//    @NotNull
+//    private Character status;
 
 
 }

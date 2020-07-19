@@ -1,0 +1,28 @@
+package com.inventory.dto.response.product;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import java.io.Serializable;
+
+/**
+ * @author Rupak
+ */
+
+@Getter
+@Setter
+public class ProductMinimalResponseDTO implements Serializable {
+
+    private String productName;
+
+    private String productCategory;
+
+    private String productType;
+
+    private String productQuantity;
+
+    private Double costPrice;
+
+    private Double sellingPrice;
+
+}

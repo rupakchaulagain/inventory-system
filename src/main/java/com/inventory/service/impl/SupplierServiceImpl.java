@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.inventory.utils.Supplier.SupplierUtils.parseToSupplier;
+
 /**
  * @author rupak ON 2020/06/07-7:31 PM
  */
@@ -30,9 +32,9 @@ public class SupplierServiceImpl implements SupplierService {
     @Override
     public void save(SupplierRequestDTO requestDTO) {
 
-        validateSupplierByNameAndPanNumber(requestDTO.getSupplierName(),
-                requestDTO.getSupplierPan());
-        Supplier supplier = SupplierUtils.parseToSupplier(requestDTO);
+//        validateSupplierByNameAndPanNumber(requestDTO.getSupplierName(),
+//                requestDTO.getSupplierPanNumber());
+        Supplier supplier = parseToSupplier(requestDTO);
         supplierRepository.save(supplier);
 
 

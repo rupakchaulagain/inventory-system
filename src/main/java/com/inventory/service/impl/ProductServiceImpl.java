@@ -5,8 +5,9 @@ import com.inventory.dto.commons.DropDownResponseDTO;
 import com.inventory.dto.request.product.ProductRequestDTO;
 import com.inventory.dto.request.product.ProductSearchRequestDTO;
 import com.inventory.dto.request.product.ProductUpdateRequestDTO;
-import com.inventory.dto.response.ProductMinimalResponseDTO;
-import com.inventory.dto.response.ProductResponseDTO;
+import com.inventory.dto.response.product.ProductMinimalResponseDTO;
+import com.inventory.dto.response.product.ProductResponseDTO;
+import com.inventory.dto.response.product.ProductSearchResponseDTO;
 import com.inventory.exception.DataDuplicationException;
 import com.inventory.exception.NoContentFoundException;
 import com.inventory.model.Product;
@@ -84,8 +85,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductMinimalResponseDTO> search(ProductSearchRequestDTO departmentSearchRequestDTO, Pageable pageable) {
-        return null;
+    public ProductSearchResponseDTO search(ProductSearchRequestDTO requestDTO, Pageable pageable) {
+
+        ProductSearchResponseDTO responseDTOList=productRepository.search(requestDTO,pageable);
+
+        return responseDTOList;
     }
 
     @Override

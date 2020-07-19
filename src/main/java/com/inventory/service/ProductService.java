@@ -5,8 +5,8 @@ import com.inventory.dto.commons.DropDownResponseDTO;
 import com.inventory.dto.request.product.ProductRequestDTO;
 import com.inventory.dto.request.product.ProductSearchRequestDTO;
 import com.inventory.dto.request.product.ProductUpdateRequestDTO;
-import com.inventory.dto.response.ProductMinimalResponseDTO;
-import com.inventory.dto.response.ProductResponseDTO;
+import com.inventory.dto.response.product.ProductResponseDTO;
+import com.inventory.dto.response.product.ProductSearchResponseDTO;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public interface ProductService {
 
     void delete(DeleteRequestDTO deleteRequestDTO);
 
-    List<ProductMinimalResponseDTO> search(ProductSearchRequestDTO departmentSearchRequestDTO, Pageable pageable);
+    ProductSearchResponseDTO search(ProductSearchRequestDTO departmentSearchRequestDTO, Pageable pageable);
 
     ProductResponseDTO fetchDetails(Long id);
 
