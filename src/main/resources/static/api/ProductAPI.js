@@ -1,8 +1,19 @@
 $(document).ready(function () {
 
+    // $("#tab2href").click(function (e) {
+    //
+    //     e.preventDefault();
+    //     $("#tab_1").removeClass("active");  // this deactivates the home tab
+    //     $("#tab_2").addClass("active");
+    //
+    //     getProductTableAPI();
+    //
+    // });
+
     getSupplierActiveDropdown();
-    getProductTableAPI();
+
 })
+
 
 function getSupplierActiveDropdown() {
 
@@ -44,8 +55,8 @@ function getProductTableAPI() {
         supplierName: ""
     }
 
-    var page="1";
-    var size="10";
+    var page = "1";
+    var size = "10";
 
     $.ajax({
         type: "PUT",
@@ -61,8 +72,6 @@ function getProductTableAPI() {
 
             console.log("SUCCESS : ", data);
 
-            // alert(JSON.stringify(data, null, 4));
-
         },
         error: function (e) {
 
@@ -76,28 +85,28 @@ function getProductTableAPI() {
 }
 
 
-    function constructDataTable(data) {
+function constructDataTable(data) {
 
-        $.each(data.responseDTOList, function (i, product) {
+    $.each(data.responseDTOList, function (i, product) {
 
-            var customerRow = '<tr>' +
-                '<td>' + (++i) + '</td>' +
-                '<td>' + product.productName + '</td>' +
-                '<td>' + product.productCategory + '</td>' +
-                '<td>' + product.productType + '</td>' +
-                '<td>' + product.productQuantity + '</td>' +
-                '<td>' + product.costPrice + '</td>' +
-                '<td>' + product.sellingPrice + '</td>' +
-                '<td>' + constructActionButton(product.id) + '</td>' +
-                '</tr>';
+        var customerRow = '<tr>' +
+            '<td>' + (++i) + '</td>' +
+            '<td>' + product.productName + '</td>' +
+            '<td>' + product.productCategory + '</td>' +
+            '<td>' + product.productType + '</td>' +
+            '<td>' + product.productQuantity + '</td>' +
+            '<td>' + product.costPrice + '</td>' +
+            '<td>' + product.sellingPrice + '</td>' +
+            '<td>' + constructActionButton(product.id) + '</td>' +
+            '</tr>';
 
-            $('#productdata tbody').append(customerRow);
+        $('#productdata tbody').append(customerRow);
 
-        });
+    });
 
-    }
+}
 
-    function constructActionButton(id){
+function constructActionButton(id) {
 
     return "   <div class=\"btn-group\">\n" +
         "                    <button type=\"button\" class=\"btn btn-default\">Action</button>\n" +
@@ -110,20 +119,19 @@ function getProductTableAPI() {
         "                  </div> ";
 
 
-    }
-
+}
 
 
 $(document).ready(function () {
-    $("#productSubmitBtn").click(function () {
-
+    $("#productSubmitBtn").click(function (e) {
+        e.preventDefault();
         saveProduct();
     });
 })
 
 function saveProduct() {
 
-    var product= getProductFormData();
+    var product = getProductFormData();
 
     // alert("product api call-----"+JSON.stringify(product));
 
@@ -151,14 +159,6 @@ function saveProduct() {
 
             console.log("ERROR : ", e);
 
-
-            // var json = "<h4>Ajax Response</h4>&lt;pre&gt;"
-            //     + e.responseText + "&lt;/pre&gt;";
-            // $('#feedback').html(json);
-            //
-            // console.log("ERROR : ", e);
-            // $("#btn-search").prop("disabled", false);
-
             alert(JSON.stringify(e, null, 4));
 
         }
@@ -167,19 +167,17 @@ function saveProduct() {
 }
 
 
-function getProductFormData(){
+function getProductFormData() {
     var data = decodeURIComponent($("#saveProductForm").serialize());
     var formData = data.split("&");
-    var product={};
+    var product = {};
 
-    for(var key in formData)
-    {
+    for (var key in formData) {
         console.log(formData[key]);
         product[formData[key].split("=")[0]] = formData[key].split("=")[1];
     }
 
     return product;
-
 
 
 }

@@ -23,6 +23,21 @@ public class SwaggerConstants {
             // other public endpoints of your API may be appended to this array
     };
 
+    public interface AdminConstant {
+        String BASE_API_VALUE = "This is Admin Resource";
+        String SAVE_OPERATION = "Save new admin";
+        String UPDATE_OPERATION = "Update existing admin details";
+        String DELETE_OPERATION = "Set admin status as 'D' with specific remarks";
+        String SEARCH_OPERATION = "Search admin according to given request parameters";
+        String DETAILS_OPERATION = "Fetch admin details by its id";
+        String FETCH_DETAILS_FOR_DROPDOWN = "Fetch minimal admin details (id and name) for dropdown";
+        String FETCH_PRODUCT_FOR_DROP_DOWN_OPERATION = "Fetch minimal admin details (id and name) for dropdown";
+        String FETCH_ACTIVE_PRODUCT_FOR_DROP_DOWN_OPERATION = "Fetch minimal active admin details (id and name)";
+    }
+    
+    
+    
+
 
     //P
     public interface ProductConstant {

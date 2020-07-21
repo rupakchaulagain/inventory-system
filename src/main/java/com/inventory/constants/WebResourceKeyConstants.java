@@ -6,6 +6,10 @@ public class WebResourceKeyConstants {
     public static final String API_V1 = "/api/v1";
     public static final String ACTIVE = "/active";
 
+    public interface AdminConstant {
+        String BASE_ADMIN = "/admin";
+    }
+
 
     //B
     public static final String BASE_PASSWORD = "/password";

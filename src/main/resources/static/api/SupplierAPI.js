@@ -1,7 +1,19 @@
 $(document).ready(function () {
 
+    $("#tab2href").click(function(e){
+
+        e.preventDefault();
+        $("#tab_1").removeClass("active");  // this deactivates the home tab
+        $("#tab_2").addClass("active");
+
+        getSupplierTableAPI();
+
+    });
+
+
     getSupplierActiveDropdown();
 })
+
 
 function getSupplierActiveDropdown() {
 
@@ -52,8 +64,6 @@ function saveSupplier() {
 
     var supplier = getSupplierFormData();
 
-    alert(JSON.stringify(supplier));
-
     $.ajax({
         type: "POST",
         contentType: "application/json; charset=utf-8",
@@ -65,7 +75,10 @@ function saveSupplier() {
     }).done(function (data) {
 
         $("#tab_1").removeClass("active");  // this deactivates the home tab
+        $("#tab1href").removeClass("active");
+
         $("#tab_2").addClass("active");  // this activates the profile tab
+        $("#tab2href").addClass("active");
 
         getSupplierTableAPI();
 
@@ -124,7 +137,7 @@ function getSupplierTableAPI() {
 
             constructDataTable(data);
 
-            console.log("SUCCESS : ", data);
+            console.log("SUCCESS table called : ", data);
 
         },
         error: function (e) {
