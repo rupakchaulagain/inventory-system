@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 public interface SupplierRepository extends JpaRepository<com.inventory.model.Supplier,Long>,
         SupplierRepositoryCustom {
 
-    @Query("SELECT s FROM Supplier s WHERE s.id=:id")
+    @Query("SELECT s FROM Supplier s WHERE s.id=:id AND s.status='Y'")
     com.inventory.model.Supplier findSupplierBySupplierId(@Param("id") Long supplierId);
 
 }

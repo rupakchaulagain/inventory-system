@@ -10,10 +10,6 @@ import java.io.Serializable;
  * @author Rupak
  */
 @Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 public class ProductRequestDTO implements Serializable {
 
 

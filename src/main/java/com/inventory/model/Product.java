@@ -45,7 +45,7 @@ public class Product extends Auditable<String> implements Serializable {
     @JoinColumn(name = "product_price")
     private ProductPrice productPrice;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "supplier_id")
     private Supplier supplier;
 

@@ -121,7 +121,6 @@ function constructActionButton(id) {
 
 }
 
-
 $(document).ready(function () {
     $("#productSubmitBtn").click(function (e) {
         e.preventDefault();

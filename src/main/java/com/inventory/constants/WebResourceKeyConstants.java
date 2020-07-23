@@ -66,7 +66,9 @@ public class WebResourceKeyConstants {
         String BASE_PRODUCT = "/product";
     }
 
-
+    public interface ProductCategoryConstant {
+        String BASE_PRODUCT_CATEGORY = "/product-category";
+    }
 
     //Q
 

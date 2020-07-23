@@ -129,7 +129,7 @@
 
                                         <!-- /.card-header -->
                                         <!-- form start -->
-                                        <form role="form" id="saveSupplierForm" name="saveSupplierForm">
+                                        <form role="form" id="saveProductCategoryForm" name="saveProductCategoryForm">
 
                                             <div class="card-body">
 
@@ -140,47 +140,28 @@
                                                         <!-- general form elements -->
                                                         <div class="card card-primary">
                                                             <div class="card-header">
-                                                                <h3 class="card-title">Supplier Details</h3>
+                                                                <h3 class="card-title">Product Category Details</h3>
                                                             </div>
 
                                                             <div class="card-body">
+
                                                                 <div class="form-group">
-                                                                    <label>Supplier Name</label>
-                                                                    <input type="text" class="form-control" id="supplierName" name="supplierName" placeholder="Enter Supplier Name">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label>Supplier Address</label>
-                                                                    <input type="text" class="form-control" id="supplierAddress" name="supplierAddress" placeholder="Enter Supplier Address">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label>Supplier PAN Number</label>
-                                                                    <input type="text" class="form-control" id="supplierPanNumber" name="supplierPanNumber" placeholder="Enter Supplier PAN Number">
+                                                                    <label>Supplier</label>
+                                                                    <select id="supplier-dropdown" name="supplierId" class="form-control">
+                                                                        <option></option>
+                                                                    </select>
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label>Supplier Phone Number</label>
-                                                                    <input type="text" class="form-control" id="supplierPhoneNumber" name="supplierPhoneNumber" placeholder="Enter Supplier Phone Number">
+                                                                    <label>Product Category Name</label>
+                                                                    <input type="text" class="form-control" id="productCategoryName" name="productCategoryName" placeholder="Enter Product Category Name">
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label>Supplier Mobile Number</label>
-                                                                    <input type="text" class="form-control" id="supplierMobileNumber" name="supplierMobileNumber" placeholder="Enter Mobile Number">
+                                                                    <label>Product Description</label>
+                                                                    <textarea class="form-control" id="productCategoryDescription" name="productCategoryDescription" rows="3" placeholder="Enter Product Category Description"></textarea>
                                                                 </div>
-
-                                                                <div class="form-group">
-                                                                    <label>Supplier Email</label>
-                                                                    <input type="text" class="form-control" id="supplierEmail" name="supplierEmail" placeholder="Enter Supplier Email">
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <label>Supplier Website Url</label>
-                                                                    <input type="text" class="form-control" id="supplierWebsiteUrl" name="supplierWebsiteUrl" placeholder="Enter Website Url">
-                                                                </div>
-
-                                                                <!--<div class="form-group">-->
-                                                                <!--<label>Supplier Email</label>-->
-                                                                <!--<textarea class="form-control" id="productDescription" name="supplierEmail" rows="3" placeholder="Enter Product Description"></textarea>-->
-                                                                <!--</div>-->
+                                                            </div>
 
                                                                 <div class="form-group">
                                                                     <label>Status</label>
@@ -196,7 +177,7 @@
                                                             </div>
 
                                                             <div class="card-footer">
-                                                                <button type="submit" id="supplierSubmitBtn" class="btn btn-primary">Submit</button>
+                                                                <button type="submit" id="productCategorySubmitBtn" class="btn btn-primary">Submit</button>
                                                             </div>
 
 
@@ -318,6 +299,7 @@
 
 <!-- jQuery -->
 <script src="../../plugins/jquery/jquery.min.js"></script>
+<script src="../../api/ProductCategoryAPI.js"></script>
 <script src="../../api/SupplierAPI.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
