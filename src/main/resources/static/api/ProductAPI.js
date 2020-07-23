@@ -87,6 +87,7 @@ function getProductTableAPI() {
 
 function constructDataTable(data) {
 
+    $("#productdata tbody").empty();
     $.each(data.responseDTOList, function (i, product) {
 
         var customerRow = '<tr>' +

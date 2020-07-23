@@ -154,6 +154,7 @@ function getSupplierTableAPI() {
 
 function constructDataTable(data) {
 
+    $("#supplier-data tbody").empty();
     $.each(data.responseDTOList, function (i, supplier) {
 
         var customerRow = '<tr>' +
@@ -164,6 +165,7 @@ function constructDataTable(data) {
             '<td>' + supplier.supplierPhoneNumber + '</td>' +
             '<td>' + constructActionButton(supplier.id) + '</td>' +
             '</tr>';
+
 
         $('#supplier-data tbody').append(customerRow);
 
