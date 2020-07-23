@@ -26,6 +26,22 @@ public class DashboardController {
         return "index";
     }
 
+    @GetMapping("/product-category")
+    public String productCategory(Model model){
+
+        System.out.println("product-category page is called.....");
+
+        return "product-category";
+    }
+
+    @GetMapping("/product-type")
+    public String productType(Model model){
+
+        System.out.println("product-type page is called.....");
+
+        return "product-type";
+    }
+
     @GetMapping("/product")
     public String product(Model model){
 
