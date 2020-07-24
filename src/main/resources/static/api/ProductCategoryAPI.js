@@ -26,6 +26,9 @@ function saveProductCategory() {
 
             console.log("SUCCESS : ", data);
 
+            alertSuccessMessage();
+
+
             $("#tab_1").removeClass("active");  // this deactivates the home tab
             $("#tab_2").addClass("active");  // this activates the profile tab
 
@@ -57,5 +60,28 @@ function getProductCategoryFormData() {
 
     return product;
 
+
+}
+
+function alertSuccessMessage() {
+
+    alert("suceess logic----");
+
+    return "<div class=\"alert alert-success alert-dismissible\">\n" +
+        "                    <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>\n" +
+        "                    <h5><i class=\"icon fas fa-check\"></i> Alert!</h5>\n" +
+        "                    Product Category is added Succesfully...\n" +
+        "                </div>";
+
+}
+
+
+function alertFailureMessage() {
+
+    return "<div class=\"alert alert-success alert-dismissible\">\n" +
+        "                    <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>\n" +
+        "                    <h5><i class=\"icon fas fa-check\"></i> Alert!</h5>\n" +
+        "                    Product Category is added Succesfully...\n" +
+        "                </div>";
 
 }

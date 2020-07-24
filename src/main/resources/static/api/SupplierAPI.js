@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $("#tab2href").click(function(e){
+    $("#tab2href").click(function (e) {
 
         e.preventDefault();
         $("#tab_1").removeClass("active");  // this deactivates the home tab
@@ -9,6 +9,13 @@ $(document).ready(function () {
         getSupplierTableAPI();
 
     });
+
+    getSupplierActiveDropdown();
+})
+
+$(document).ready(function () {
+
+    getSupplierTableAPI();
 
 
     getSupplierActiveDropdown();
@@ -111,9 +118,9 @@ function getSupplierFormData() {
 
 $("#tab_2")
     .tabs()
-    .on("click", '[role="tab"]', function(e) {
+    .on("click", '[role="tab"]', function (e) {
         e.preventDefault();
-       getSupplierTableAPI();
+        getSupplierTableAPI();
     });
 
 function getSupplierTableAPI() {
@@ -186,5 +193,27 @@ function constructActionButton(id) {
         "                    </button>\n" +
         "                  </div> ";
 
+
+}
+
+
+function alertSuccessMessage() {
+
+    return "<div class=\"alert alert-success alert-dismissible\">\n" +
+        "                    <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>\n" +
+        "                    <h5><i class=\"icon fas fa-check\"></i> Alert!</h5>\n" +
+        "                    Product Category is added Succesfully...\n" +
+        "                </div>";
+
+}
+
+
+function alertFailureMessage() {
+
+    return "<div class=\"alert alert-success alert-dismissible\">\n" +
+        "                    <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>\n" +
+        "                    <h5><i class=\"icon fas fa-check\"></i> Alert!</h5>\n" +
+        "                    Product Category is added Succesfully...\n" +
+        "                </div>";
 
 }

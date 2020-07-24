@@ -21,6 +21,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini">
+
 <div class="wrapper">
     <!-- Navbar -->
     <div th:include="header.html"></div>
@@ -107,6 +108,8 @@
         <section class="content-header">
 
             <div class="container-fluid">
+
+
 
                 <div class="row">
                     <div class="col-12">
@@ -228,7 +231,7 @@
                                                             <!--</div>-->
                                                             <!-- /.card-header -->
                                                             <div class="card-body">
-                                                                <table id="supplier-data" class="table table-bordered table-hover">
+                                                                <table id="product-category-data" class="table table-bordered table-hover">
                                                                     <thead>
                                                                     <tr>
                                                                         <th>S.N.</th>
@@ -315,11 +318,7 @@
 <!-- page script -->
 <script>
     $(function () {
-        $("#example1").DataTable({
-            "responsive": true,
-            "autoWidth": false,
-        });
-        $('#example2').DataTable({
+        $('#product-category-data').DataTable({
             "paging": true,
             "lengthChange": false,
             "searching": false,
