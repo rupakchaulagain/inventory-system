@@ -16,7 +16,7 @@ public class ProductCategoryUtils {
                 .name(requestDTO.getProductCategoryName())
                 .description(requestDTO.getProductCategoryDescription())
                 .status(requestDTO.getStatus())
-                .supplier(supplier)
+                .supplierId(supplier)
                 .build();
 
     }

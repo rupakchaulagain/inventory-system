@@ -2,11 +2,16 @@ package com.inventory.service.impl;
 
 import com.inventory.dto.commons.DropDownResponseDTO;
 import com.inventory.dto.request.productCategory.ProductCategoryRequestDTO;
+import com.inventory.dto.request.productCategory.ProductCategorySearchRequestDTO;
+import com.inventory.dto.response.productCategory.ProductCategorySearchResponseDTO;
+import com.inventory.exception.NoContentFoundException;
+import com.inventory.model.ProductCategory;
 import com.inventory.model.Supplier;
 import com.inventory.repository.ProductCategoryRepository;
 import com.inventory.repository.SupplierRepository;
 import com.inventory.service.ProductCategoryService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,9 +51,26 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 
     @Override
     public List<DropDownResponseDTO> fetchActiveDropDownList() {
-        return null;
+
+        List<DropDownResponseDTO> downResponseDTOS = productCategoryRepository.fetchActiveDropDownList()
+                .orElseThrow(() -> PRODUCT_CATEGORY_NOT_FOUND.get());
+
+        return downResponseDTOS;
+
+
+    }
+
+    @Override
+    public ProductCategorySearchResponseDTO search(ProductCategorySearchRequestDTO searchRequestDTO, Pageable pageable) {
+        ProductCategorySearchResponseDTO searchResponseDTO = productCategoryRepository.search(searchRequestDTO,
+                pageable);
+
+        return searchResponseDTO;
     }
 
     private void validateProductCategoryDuplicity(ProductCategoryRequestDTO requestDTO) {
     }
+
+    private java.util.function.Supplier<NoContentFoundException> PRODUCT_CATEGORY_NOT_FOUND = () ->
+            new NoContentFoundException(ProductCategory.class);
 }
