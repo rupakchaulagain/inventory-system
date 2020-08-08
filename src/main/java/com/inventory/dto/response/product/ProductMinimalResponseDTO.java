@@ -13,6 +13,8 @@ import java.io.Serializable;
 @Setter
 public class ProductMinimalResponseDTO implements Serializable {
 
+    private Long id;
+
     private String productName;
 
     private String productCategory;

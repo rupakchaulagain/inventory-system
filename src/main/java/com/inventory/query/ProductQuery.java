@@ -51,6 +51,7 @@ public class ProductQuery {
 
     public static Function<ProductSearchRequestDTO, String> QUERY_TO_SEARCH_PRODUCT = (searchRequestDTO) -> {
         return " SELECT " +
+                " p.id as id," +
                 " p.productName as productName," +
                 " p.productCategory as productCategory," +
                 " p.productType as productType," +
@@ -58,7 +59,7 @@ public class ProductQuery {
                 " pp.costPrice as costPrice," +
                 " pp.sellingPrice as sellingPrice" +
                 " FROM Product p" +
-                " LEFT JOIN ProductPrice pp ON p.productPrice.id=pp.id"+
+                " LEFT JOIN ProductPrice pp ON p.productPrice.id=pp.id" +
                 GET_WHERE_CLAUSE_FOR_SEARCH_PRODUCT(searchRequestDTO);
     };
 
@@ -68,20 +69,22 @@ public class ProductQuery {
                 " p.status!='D'";
 
         if (!StringUtils.isEmpty(searchRequestDTO.getProductName()))
-            whereClause += " AND p.productName='" + searchRequestDTO.getProductName()+"'";
+            whereClause += " AND p.productName='" + searchRequestDTO.getProductName() + "'";
 
         if (!StringUtils.isEmpty(searchRequestDTO.getProductCategory()))
-            whereClause += " AND p.productCategory='" + searchRequestDTO.getProductCategory()+"'";;
+            whereClause += " AND p.productCategory='" + searchRequestDTO.getProductCategory() + "'";
+        ;
 
         if (!StringUtils.isEmpty(searchRequestDTO.getProductType()))
-            whereClause += " AND p.productType='" + searchRequestDTO.getProductType()+"'";;
+            whereClause += " AND p.productType='" + searchRequestDTO.getProductType() + "'";
+        ;
 
 //        if (!StringUtils.isEmpty(searchRequestDTO.getProductCode()))
 //            whereClause += " AND s.panNumber='" + searchRequestDTO.getProductCode()+"'";;
+        whereClause+=" ORDER BY p.id DESC";
 
         return whereClause;
     }
-
 
 
 }
