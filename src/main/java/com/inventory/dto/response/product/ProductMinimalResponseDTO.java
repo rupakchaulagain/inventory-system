@@ -27,4 +27,6 @@ public class ProductMinimalResponseDTO implements Serializable {
 
     private Double sellingPrice;
 
+    private Character status;
+
 }

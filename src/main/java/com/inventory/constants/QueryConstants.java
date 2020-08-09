@@ -55,6 +55,8 @@ public class QueryConstants {
     //R
 
     //S
+
+    public static final String SUPPLIER_ID = "supplierId";
     public static final String SUPPLIER_NAME = "supplierName";
     public static final String SUPPLIER_PAN_NUMBER = "panNumber";
 

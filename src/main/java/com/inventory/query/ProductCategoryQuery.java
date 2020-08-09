@@ -13,11 +13,21 @@ public class ProductCategoryQuery {
 
     public static final String QUERY_TO_FETCH_PRODUCT_CATEGORY_FOR_DROPDOWN =
             "SELECT" +
-                    " s.id as value," +
-                    " s.name as label" +
-                    " FROM Supplier s" +
-                    " WHERE s.status != 'D'" +
-                    " ORDER BY s.name ASC";
+                    " pc.id as value," +
+                    " pc.name as label" +
+                    " FROM ProductCategory pc" +
+                    " WHERE pc.status != 'D'" +
+                    " ORDER BY pc.name ASC";
+
+    public static final String QUERY_TO_FETCH_SUPPLIER_WISE_PRODUCT_CATEGORIES =
+            "SELECT" +
+                    " pc.id as value," +
+                    " pc.name as label" +
+                    " FROM ProductCategory pc" +
+                    " LEFT JOIN Supplier s ON s.id=pc.supplierId.id" +
+                    " WHERE pc.status != 'D'" +
+                    " AND s.id=:supplierId"+
+                    " ORDER BY pc.name ASC";
 
     public static final Function<ProductCategorySearchRequestDTO, String> QUERY_TO_SEARCH_PRODUCT_CATEGORY = (searchRequestDTO) -> {
         return " SELECT" +

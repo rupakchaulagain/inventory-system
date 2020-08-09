@@ -2,7 +2,6 @@ package com.inventory.controller;
 
 import com.inventory.dto.request.productCategory.ProductCategoryRequestDTO;
 import com.inventory.dto.request.productCategory.ProductCategorySearchRequestDTO;
-import com.inventory.dto.request.supplier.SupplierSearchRequestDTO;
 import com.inventory.service.ProductCategoryService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -24,7 +23,7 @@ import static org.springframework.http.ResponseEntity.ok;
  * @author rupak ON 2020/07/23-8:59 AM
  */
 @RestController
-@RequestMapping(value = API_V1 +BASE_PRODUCT_CATEGORY)
+@RequestMapping(value = API_V1 + BASE_PRODUCT_CATEGORY)
 @Api(BASE_API_VALUE)
 public class ProductCategoryController {
 
@@ -57,6 +56,12 @@ public class ProductCategoryController {
         return ok(productCategoryService.fetchActiveDropDownList());
     }
 
+
+    @GetMapping(ACTIVE + MIN + SUPPLIER_ID_PATH_VARIABLE_BASE)
+    @ApiOperation(FETCH_DETAILS_FOR_DROPDOWN)
+    public ResponseEntity<?> fetchSupplierWiseProductCategories(@PathVariable("supplierId") Long supplierId) {
+        return ok(productCategoryService.fetchSupplierWiseProductCategories(supplierId));
+    }
 
 
 }

@@ -17,4 +17,6 @@ public interface ProductCategoryRepositoryCustom {
     Optional<List<DropDownResponseDTO>> fetchActiveDropDownList();
 
     ProductCategorySearchResponseDTO search(ProductCategorySearchRequestDTO searchRequestDTO, Pageable pageable);
+
+    Optional<List<DropDownResponseDTO>> fetchSupplierWiseProductCategories(Long supplierId);
 }

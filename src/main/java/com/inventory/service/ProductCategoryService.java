@@ -15,4 +15,7 @@ public interface ProductCategoryService {
     List<DropDownResponseDTO> fetchActiveDropDownList();
 
     ProductCategorySearchResponseDTO search(ProductCategorySearchRequestDTO searchRequestDTO, Pageable pageable);
+
+    List<DropDownResponseDTO> fetchSupplierWiseProductCategories(Long supplierId);
 }
+

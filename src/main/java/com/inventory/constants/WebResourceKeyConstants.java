@@ -77,6 +77,9 @@ public class WebResourceKeyConstants {
 
     
     //S
+
+    public static final String SUPPLIER_ID_PATH_VARIABLE_BASE = "/{supplierId}";
+
     public interface SupplierConstant {
         String BASE_SUPPLIER = "/supplier";
     }

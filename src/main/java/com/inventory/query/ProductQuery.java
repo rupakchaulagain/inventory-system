@@ -57,7 +57,8 @@ public class ProductQuery {
                 " p.productType as productType," +
                 " p.productQuantity as productQuantity," +
                 " pp.costPrice as costPrice," +
-                " pp.sellingPrice as sellingPrice" +
+                " pp.sellingPrice as sellingPrice," +
+                " p.status as status"+
                 " FROM Product p" +
                 " LEFT JOIN ProductPrice pp ON p.productPrice.id=pp.id" +
                 GET_WHERE_CLAUSE_FOR_SEARCH_PRODUCT(searchRequestDTO);

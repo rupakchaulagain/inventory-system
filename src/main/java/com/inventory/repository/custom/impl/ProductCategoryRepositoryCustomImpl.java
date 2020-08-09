@@ -5,7 +5,6 @@ import com.inventory.dto.request.productCategory.ProductCategorySearchRequestDTO
 import com.inventory.dto.response.productCategory.ProductCategoryMinimalResponseDTO;
 import com.inventory.dto.response.productCategory.ProductCategorySearchResponseDTO;
 import com.inventory.exception.NoContentFoundException;
-import com.inventory.model.ProductCategory;
 import com.inventory.query.ProductCategoryQuery;
 import com.inventory.repository.custom.ProductCategoryRepositoryCustom;
 import org.springframework.data.domain.Pageable;
@@ -20,6 +19,7 @@ import java.util.Optional;
 import java.util.function.Supplier;
 
 import static com.inventory.constants.ErrorMessageConstants.NO_RECORD_FOUND;
+import static com.inventory.constants.QueryConstants.SUPPLIER_ID;
 import static com.inventory.utils.commons.PageableUtils.addPagination;
 import static com.inventory.utils.commons.QueryUtils.createQuery;
 import static com.inventory.utils.commons.QueryUtils.transformQueryToResultList;
@@ -66,6 +66,16 @@ public class ProductCategoryRepositoryCustomImpl implements ProductCategoryRepos
         searchResponseDTO.setResponseDTOList(minimalResponseDTOS);
 
         return searchResponseDTO;
+    }
+
+    @Override
+    public Optional<List<DropDownResponseDTO>> fetchSupplierWiseProductCategories(Long supplierId) {
+        Query query = createQuery.apply(entityManager, ProductCategoryQuery.QUERY_TO_FETCH_SUPPLIER_WISE_PRODUCT_CATEGORIES)
+                .setParameter(SUPPLIER_ID,supplierId);
+
+        List<DropDownResponseDTO> dropDownDTOS = transformQueryToResultList(query, DropDownResponseDTO.class);
+
+        return dropDownDTOS.isEmpty() ? Optional.empty() : Optional.of(dropDownDTOS);
     }
 
     private Supplier<NoContentFoundException> PRRODUCT_CATEGORY_NOT_FOUND = () -> {

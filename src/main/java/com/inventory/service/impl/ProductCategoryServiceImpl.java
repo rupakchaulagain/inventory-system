@@ -68,7 +68,16 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
         return searchResponseDTO;
     }
 
+    @Override
+    public List<DropDownResponseDTO> fetchSupplierWiseProductCategories(Long supplierId) {
+        List<DropDownResponseDTO> downResponseDTOS = productCategoryRepository.fetchSupplierWiseProductCategories(supplierId)
+                .orElseThrow(() -> PRODUCT_CATEGORY_NOT_FOUND.get());
+
+        return downResponseDTOS;
+    }
+
     private void validateProductCategoryDuplicity(ProductCategoryRequestDTO requestDTO) {
+
     }
 
     private java.util.function.Supplier<NoContentFoundException> PRODUCT_CATEGORY_NOT_FOUND = () ->
