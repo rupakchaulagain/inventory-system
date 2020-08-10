@@ -19,9 +19,13 @@ public class SupplierMinimalResponseDTO implements Serializable {
     private String supplierName;
 
     private String supplierPanNumber;
+    
+    private String supplierEmail;
 
     private String supplierPhoneNumber;
 
     private String supplierAddress;
+
+    private Character status;
 
 }

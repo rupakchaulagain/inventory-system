@@ -1,69 +1,39 @@
 package com.inventory.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import com.inventory.service.DashboardService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import static com.inventory.constants.SwaggerConstants.ProductConstant.BASE_API_VALUE;
+import static com.inventory.constants.SwaggerConstants.ProductConstant.FETCH_PRODUCT_FOR_DROP_DOWN_OPERATION;
+import static com.inventory.constants.WebResourceKeyConstants.API_V1;
+import static com.inventory.constants.WebResourceKeyConstants.DashboardConstant.BASE_DASHBOARD;
+import static com.inventory.constants.WebResourceKeyConstants.DashboardConstant.TILES_STATICS;
+import static org.springframework.http.ResponseEntity.ok;
 
 /**
  * @author rupak ON 2020/07/15-10:27 AM
  */
-@Controller
+@RestController
+@RequestMapping(value = API_V1 +BASE_DASHBOARD)
+@Api(BASE_API_VALUE)
 public class DashboardController {
 
-    @GetMapping("/login")
-    public String login(Model model){
+    private final DashboardService dashboardService;
 
-        System.out.println("login page is called.....");
-
-        return "login";
+    public DashboardController(DashboardService dashboardService) {
+        this.dashboardService = dashboardService;
     }
 
-    @GetMapping("/")
-    public String index(Model model){
-
-        System.out.println("index page is called.....");
-
-        return "index";
+    @GetMapping(TILES_STATICS)
+    @ApiOperation(FETCH_PRODUCT_FOR_DROP_DOWN_OPERATION)
+    public ResponseEntity<?> fetchDashboardTiles() {
+        return ok(dashboardService.fetchDashboardTiles());
     }
 
-    @GetMapping("/product-category")
-    public String productCategory(Model model){
-
-        System.out.println("product-category page is called.....");
-
-        return "product-category";
-    }
-
-    @GetMapping("/product-type")
-    public String productType(Model model){
-
-        System.out.println("product-type page is called.....");
-
-        return "product-type";
-    }
-
-    @GetMapping("/product")
-    public String product(Model model){
-
-        System.out.println("product page is called.....");
-
-        return "product";
-    }
-
-    @GetMapping("/supplier")
-    public String supplier(Model model){
-
-        System.out.println("supplier page is called.....");
-
-        return "supplier";
-    }
-
-    @GetMapping("/test")
-    public String test(Model model){
-
-        System.out.println("test page is called.....");
-
-        return "test";
-    }
 
 }

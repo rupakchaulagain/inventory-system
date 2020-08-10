@@ -20,6 +20,12 @@ public class WebResourceKeyConstants {
 
     //D
 
+    public interface DashboardConstant {
+        String BASE_DASHBOARD = "/dashboard";
+        String TILES_STATICS = "/tiles";
+    }
+
+
     public static final String DETAIL = "/detail";
 
     //F

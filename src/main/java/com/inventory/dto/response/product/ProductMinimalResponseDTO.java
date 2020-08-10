@@ -8,7 +8,6 @@ import java.io.Serializable;
 /**
  * @author Rupak
  */
-
 @Getter
 @Setter
 public class ProductMinimalResponseDTO implements Serializable {

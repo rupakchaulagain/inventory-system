@@ -25,8 +25,10 @@ public class SupplierQuery {
                 " s.id as id,"+
                 " s.name as supplierName," +
                 " s.phoneNumber as supplierPhoneNumber," +
+                " s.email  as supplierEmail,"+
                 " s.panNumber as supplierPanNumber," +
-                " s.address as supplierAddress" +
+                " s.address as supplierAddress," +
+                " s.status as status"+
                 " FROM Supplier s" +
                 GET_WHERE_CLAUSE_FOR_SEARCH_SUPPLIER(searchRequestDTO);
     };
