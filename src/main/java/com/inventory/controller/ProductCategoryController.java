@@ -57,7 +57,7 @@ public class ProductCategoryController {
     }
 
 
-    @GetMapping(ACTIVE + MIN + SUPPLIER_ID_PATH_VARIABLE_BASE)
+    @GetMapping(ACTIVE+ SUPPLIER_ID_PATH_VARIABLE_BASE)
     @ApiOperation(FETCH_DETAILS_FOR_DROPDOWN)
     public ResponseEntity<?> fetchSupplierWiseProductCategories(@PathVariable("supplierId") Long supplierId) {
         return ok(productCategoryService.fetchSupplierWiseProductCategories(supplierId));

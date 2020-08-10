@@ -44,7 +44,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
         Query query = createQuery.apply(entityManager, QUERY_TO_VALIDATE_DUPLICITY)
                 .setParameter(PRODUCT_NAME, requestDTO.getProductName())
                 .setParameter(PRODUCT_TYPE, requestDTO.getProductType())
-                .setParameter(PRODUCT_CATEGORY, requestDTO.getProductCategory());
+                .setParameter(PRODUCT_CATEGORY_ID, requestDTO.getProductCategoryId());
 
         return (Long) query.getSingleResult();
     }

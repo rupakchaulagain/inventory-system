@@ -17,8 +17,7 @@ public class ProductRequestDTO implements Serializable {
     private Long supplierId;
 
     @NotNull
-    @NotEmpty
-    private String productCategory;
+    private Long productCategoryId;
 
     @NotNull
     @NotEmpty

@@ -2,7 +2,6 @@ package com.inventory.model;
 
 import com.inventory.configuration.Auditable;
 import lombok.*;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -26,8 +25,9 @@ public class Product extends Auditable<String> implements Serializable {
     @Column(name = "product_name", nullable = false)
     private String productName;
 
-    @Column(name = "product_category", nullable = false)
-    private String productCategory;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_category_id")
+    private ProductCategory productCategoryId;
 
     @Column(name = "product_type", nullable = false)
     private String productType;

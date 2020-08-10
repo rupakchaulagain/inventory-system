@@ -3,6 +3,7 @@ package com.inventory.query;
 import com.inventory.dto.request.product.ProductSearchRequestDTO;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Objects;
 import java.util.function.Function;
 
 /**
@@ -14,21 +15,25 @@ public class ProductQuery {
             " SELECT" +
                     " COUNT(p.id)" +
                     " FROM Product p" +
+                    " LEFT JOIN ProductCategory pc ON p.productCategoryId.id=pc.id" +
                     " WHERE" +
                     " p.status!='D'" +
+                    " AND pc.status!='D'" +
                     " AND p.productName=:productName" +
                     " AND p.productType=:productType" +
-                    " AND p.productCategory=:productCategory";
+                    " AND pc.id=:productCategoryId";
 
     public final static String QUERY_TO_FETCH_DETAILS =
             "SELECT" +
                     " p.productName as productName," +              //[0]
+                    " pc.name as productCategory," +
                     " p.productCode as productCode," +              //[1]
                     " price.costPrice as costPrice," +              //[2]
                     " price.sellingPrice as sellingPrice," +         //[3]
                     " p.productDescription as productDescription" + //[4]
                     " FROM Product p" +
                     " LEFT JOIN ProductPrice price ON price.id =p.productPrice.id" +
+                    " LEFT JOIN ProductCategory pc ON p.productCategoryId.id=pc.id" +
                     " WHERE p.id =:id" +
                     " AND p.status != 'D'" +
                     " AND price.status!='D'";
@@ -53,13 +58,14 @@ public class ProductQuery {
         return " SELECT " +
                 " p.id as id," +
                 " p.productName as productName," +
-                " p.productCategory as productCategory," +
+                " pc.name as productCategory," +
                 " p.productType as productType," +
                 " p.productQuantity as productQuantity," +
                 " pp.costPrice as costPrice," +
                 " pp.sellingPrice as sellingPrice," +
-                " p.status as status"+
+                " p.status as status" +
                 " FROM Product p" +
+                " LEFT JOIN ProductCategory pc ON p.productCategoryId.id=pc.id" +
                 " LEFT JOIN ProductPrice pp ON p.productPrice.id=pp.id" +
                 GET_WHERE_CLAUSE_FOR_SEARCH_PRODUCT(searchRequestDTO);
     };
@@ -67,22 +73,20 @@ public class ProductQuery {
 
     private static String GET_WHERE_CLAUSE_FOR_SEARCH_PRODUCT(ProductSearchRequestDTO searchRequestDTO) {
         String whereClause = " WHERE" +
-                " p.status!='D'";
+                " p.status!='D'"+
+                " AND pc.status!='D'";
 
         if (!StringUtils.isEmpty(searchRequestDTO.getProductName()))
             whereClause += " AND p.productName='" + searchRequestDTO.getProductName() + "'";
 
-        if (!StringUtils.isEmpty(searchRequestDTO.getProductCategory()))
-            whereClause += " AND p.productCategory='" + searchRequestDTO.getProductCategory() + "'";
-        ;
+        if (!Objects.isNull(searchRequestDTO.getProductCategoryId()))
+            whereClause += " AND pc.id=" + searchRequestDTO.getProductCategoryId();
 
         if (!StringUtils.isEmpty(searchRequestDTO.getProductType()))
             whereClause += " AND p.productType='" + searchRequestDTO.getProductType() + "'";
-        ;
 
-//        if (!StringUtils.isEmpty(searchRequestDTO.getProductCode()))
-//            whereClause += " AND s.panNumber='" + searchRequestDTO.getProductCode()+"'";;
-        whereClause+=" ORDER BY p.id DESC";
+
+        whereClause += " ORDER BY p.id DESC";
 
         return whereClause;
     }

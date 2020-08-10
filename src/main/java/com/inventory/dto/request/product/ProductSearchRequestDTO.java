@@ -12,7 +12,7 @@ public class ProductSearchRequestDTO implements Serializable {
 
     private String productName;
 
-    private String productCategory;
+    private Long productCategoryId;
 
     private String productType;
 

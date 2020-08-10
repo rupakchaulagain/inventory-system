@@ -2,6 +2,7 @@ package com.inventory.utils.Product;
 
 import com.inventory.dto.request.product.ProductRequestDTO;
 import com.inventory.model.Product;
+import com.inventory.model.ProductCategory;
 import com.inventory.model.ProductPrice;
 
 import java.util.Random;
@@ -13,10 +14,10 @@ import static com.inventory.constants.StatusConstants.ACTIVE;
  */
 public class ProductUtils {
 
-    public static Product parseToProduct(ProductRequestDTO requestDTO,ProductPrice productPrice) {
+    public static Product parseToProduct(ProductRequestDTO requestDTO, ProductPrice productPrice, ProductCategory productCategory) {
 
         Product product = new Product();
-        product.setProductCategory(requestDTO.getProductCategory());
+        product.setProductCategoryId(productCategory);
         product.setProductType(requestDTO.getProductType());
         product.setProductCode(String.valueOf(new Random().nextInt(100)));
         product.setProductName(requestDTO.getProductName());
@@ -33,10 +34,10 @@ public class ProductUtils {
         ProductPrice productPrice = new ProductPrice();
         productPrice.setCostPrice(Double.parseDouble(requestDTO.getProductCostPrice()));
 
-        if(requestDTO.getProductDiscountAmount()!=null) {
+        if (requestDTO.getProductDiscountAmount() != null) {
             productPrice.setDiscountAmount(Double.parseDouble(requestDTO.getProductDiscountAmount()));
         }
-        if(requestDTO.getProductDiscountPercentage()!=null) {
+        if (requestDTO.getProductDiscountPercentage() != null) {
             productPrice.setDiscountPercentage(Double.parseDouble(requestDTO.getProductDiscountPercentage()));
         }
         productPrice.setSellingPrice(Double.parseDouble(requestDTO.getProductSellingPrice()));

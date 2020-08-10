@@ -45,6 +45,7 @@ public class QueryConstants {
 
     //P
     public static final String PRODUCT_ID = "productId";
+    public static final String PRODUCT_CATEGORY_ID = "productCategoryId";
     public static final String PRODUCT_CATEGORY = "productCategory";
     public static final String PRODUCT_NAME = "productName";
     public static final String PRODUCT_TYPE = "productType";

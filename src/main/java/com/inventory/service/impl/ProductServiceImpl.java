@@ -5,13 +5,14 @@ import com.inventory.dto.commons.DropDownResponseDTO;
 import com.inventory.dto.request.product.ProductRequestDTO;
 import com.inventory.dto.request.product.ProductSearchRequestDTO;
 import com.inventory.dto.request.product.ProductUpdateRequestDTO;
-import com.inventory.dto.response.product.ProductMinimalResponseDTO;
 import com.inventory.dto.response.product.ProductResponseDTO;
 import com.inventory.dto.response.product.ProductSearchResponseDTO;
 import com.inventory.exception.DataDuplicationException;
 import com.inventory.exception.NoContentFoundException;
 import com.inventory.model.Product;
+import com.inventory.model.ProductCategory;
 import com.inventory.model.ProductPrice;
+import com.inventory.repository.ProductCategoryRepository;
 import com.inventory.repository.ProductPriceRepository;
 import com.inventory.repository.ProductRepository;
 import com.inventory.repository.SupplierRepository;
@@ -38,11 +39,16 @@ public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
     private final ProductPriceRepository productPriceRepository;
+    private final ProductCategoryRepository productCategoryRepository;
     private final SupplierRepository supplierRepository;
 
-    public ProductServiceImpl(ProductRepository productRepository, ProductPriceRepository productPriceRepository, SupplierRepository supplierRepository) {
+    public ProductServiceImpl(ProductRepository productRepository,
+                              ProductPriceRepository productPriceRepository,
+                              ProductCategoryRepository productCategoryRepository,
+                              SupplierRepository supplierRepository) {
         this.productRepository = productRepository;
         this.productPriceRepository = productPriceRepository;
+        this.productCategoryRepository = productCategoryRepository;
         this.supplierRepository = supplierRepository;
     }
 
@@ -53,13 +59,20 @@ public class ProductServiceImpl implements ProductService {
 
         validateProductByCategoryAndType(count, productRequestDTO.getProductName());
 
-        ProductPrice productPrice = parseToProductPrice(productRequestDTO);
-
         com.inventory.model.Supplier supplier = supplierRepository.findSupplierBySupplierId(productRequestDTO.getSupplierId());
+
+        ProductCategory productCategory=productCategoryRepository.
+                findProductCategoryById(productRequestDTO.getProductCategoryId())
+                .orElseThrow(() -> PRODUCT_CATEGORY_NOT_FOUND.get());
+
+
+        ProductPrice productPrice = parseToProductPrice(productRequestDTO);
 
         productPriceRepository.save(productPrice);
 
-        Product product = parseToProduct(productRequestDTO, productPrice);
+        Product product = parseToProduct(productRequestDTO,
+                productPrice,
+                productCategory);
 
         product.setSupplier(supplier);
         productRepository.save(product);
@@ -119,4 +132,7 @@ public class ProductServiceImpl implements ProductService {
 
     private Supplier<NoContentFoundException> PRODUCT_NOT_FOUND = () ->
             new NoContentFoundException(Product.class);
+
+    private Supplier<NoContentFoundException> PRODUCT_CATEGORY_NOT_FOUND = () ->
+            new NoContentFoundException(ProductCategory.class);
 }
