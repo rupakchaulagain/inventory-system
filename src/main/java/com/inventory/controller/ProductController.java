@@ -52,7 +52,7 @@ public class ProductController {
 
     @DeleteMapping
     @ApiOperation(DELETE_OPERATION)
-    public ResponseEntity<?> delete(@Valid @RequestBody DeleteRequestDTO deleteRequestDTO) {
+    public ResponseEntity<?> delete( @RequestBody DeleteRequestDTO deleteRequestDTO) {
         productService.delete(deleteRequestDTO);
         return ok().build();
     }

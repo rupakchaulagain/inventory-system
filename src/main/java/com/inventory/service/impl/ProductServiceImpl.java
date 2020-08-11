@@ -95,6 +95,9 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void delete(DeleteRequestDTO deleteRequestDTO) {
 
+        Product product=productRepository.findProductById(deleteRequestDTO.getId());
+        product.setStatus('D');
+        product.setRemarks(deleteRequestDTO.getRemarks());
     }
 
     @Override

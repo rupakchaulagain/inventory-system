@@ -18,8 +18,8 @@ public class DeleteRequestDTO implements Serializable {
     @NotEmpty
     private String remarks;
 
-    @NotNull
-    @DeleteStatus
-    private Character status;
+//    @NotNull
+//    @DeleteStatus
+//    private Character status;
 
 }
