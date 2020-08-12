@@ -61,7 +61,7 @@ public class ProductServiceImpl implements ProductService {
 
         com.inventory.model.Supplier supplier = supplierRepository.findSupplierBySupplierId(productRequestDTO.getSupplierId());
 
-        ProductCategory productCategory=productCategoryRepository.
+        ProductCategory productCategory = productCategoryRepository.
                 findProductCategoryById(productRequestDTO.getProductCategoryId())
                 .orElseThrow(() -> PRODUCT_CATEGORY_NOT_FOUND.get());
 
@@ -95,15 +95,15 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void delete(DeleteRequestDTO deleteRequestDTO) {
 
-        Product product=productRepository.findProductById(deleteRequestDTO.getId());
-        product.setStatus('D');
+        Product product = productRepository.findProductById(deleteRequestDTO.getId());
+        product.setStatus(deleteRequestDTO.getStatus());
         product.setRemarks(deleteRequestDTO.getRemarks());
     }
 
     @Override
     public ProductSearchResponseDTO search(ProductSearchRequestDTO requestDTO, Pageable pageable) {
 
-        ProductSearchResponseDTO responseDTOList=productRepository.search(requestDTO,pageable);
+        ProductSearchResponseDTO responseDTOList = productRepository.search(requestDTO, pageable);
 
         return responseDTOList;
     }

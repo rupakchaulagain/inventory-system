@@ -1,5 +1,6 @@
 package com.inventory.controller;
 
+import com.inventory.dto.commons.DeleteRequestDTO;
 import com.inventory.dto.request.supplier.SupplierRequestDTO;
 import com.inventory.dto.request.supplier.SupplierSearchRequestDTO;
 import com.inventory.service.SupplierService;
@@ -14,8 +15,7 @@ import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.inventory.constants.SwaggerConstants.ProductConstant.FETCH_DETAILS_FOR_DROPDOWN;
-import static com.inventory.constants.SwaggerConstants.ProductConstant.SEARCH_OPERATION;
+import static com.inventory.constants.SwaggerConstants.ProductConstant.*;
 import static com.inventory.constants.SwaggerConstants.SupplierConstant.BASE_API_VALUE;
 import static com.inventory.constants.SwaggerConstants.SupplierConstant.SAVE_OPERATION;
 import static com.inventory.constants.WebResourceKeyConstants.*;
@@ -46,6 +46,14 @@ public class SupplierController {
         m.put("key", "Saved successfully");
         return ok(m);
     }
+
+    @DeleteMapping
+    @ApiOperation(DELETE_OPERATION)
+    public ResponseEntity<?> delete( @RequestBody DeleteRequestDTO deleteRequestDTO) {
+        supplierService.delete(deleteRequestDTO);
+        return ok().build();
+    }
+
 
     @PutMapping(SEARCH)
     @ApiOperation(SEARCH_OPERATION)

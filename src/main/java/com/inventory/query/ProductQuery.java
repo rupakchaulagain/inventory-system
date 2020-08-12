@@ -30,10 +30,11 @@ public class ProductQuery {
                     " p.productCode as productCode," +              //[1]
                     " price.costPrice as costPrice," +              //[2]
                     " price.sellingPrice as sellingPrice," +         //[3]
-                    " p.productDescription as productDescription" + //[4]
+                    " p.productDescription as productDescription," + //[4]
+                    " p.status as status"+
                     " FROM Product p" +
                     " LEFT JOIN ProductPrice price ON price.id =p.productPrice.id" +
-                    " LEFT JOIN ProductCategory pc ON p.productCategoryId.id=pc.id" +
+                    " LEFT JOIN ProductCategory pc ON pc.id=p.productCategoryId.id" +
                     " WHERE p.id =:id" +
                     " AND p.status != 'D'" +
                     " AND price.status!='D'";
