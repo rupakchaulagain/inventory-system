@@ -84,4 +84,10 @@ public class ProductController {
     public ResponseEntity<?> fetchActiveDropDownList() {
         return ok(productService.fetchActiveDropDownList());
     }
+
+    @GetMapping(ACTIVE+ PRODUCT_CATEGORY_ID_PATH_VARIABLE_BASE)
+    @ApiOperation(FETCH_DETAILS_FOR_DROPDOWN)
+    public ResponseEntity<?> fetchProductListByProductCategory(@PathVariable("productCategoryId") Long productCategoryId) {
+        return ok(productService.fetchProductListByProductCategory(productCategoryId));
+    }
 }

@@ -12,7 +12,6 @@ public class SwaggerConstants {
 
     //A
     public static final String[] AUTH_WHITELIST = {
-            // -- swagger ui
             "/v1/api-docs",
             "/swagger-resources",
             "/swagger-resources/**",
@@ -20,7 +19,6 @@ public class SwaggerConstants {
             "/configuration/security",
             "/swagger-ui.html",
             "/webjars/**"
-            // other public endpoints of your API may be appended to this array
     };
 
     public interface AdminConstant {
@@ -34,9 +32,6 @@ public class SwaggerConstants {
         String FETCH_PRODUCT_FOR_DROP_DOWN_OPERATION = "Fetch minimal admin details (id and name) for dropdown";
         String FETCH_ACTIVE_PRODUCT_FOR_DROP_DOWN_OPERATION = "Fetch minimal active admin details (id and name)";
     }
-    
-    
-    
 
 
     //P
@@ -50,6 +45,18 @@ public class SwaggerConstants {
         String FETCH_DETAILS_FOR_DROPDOWN = "Fetch minimal product details (id and name) for dropdown";
         String FETCH_PRODUCT_FOR_DROP_DOWN_OPERATION = "Fetch minimal product details (id and name) for dropdown";
         String FETCH_ACTIVE_PRODUCT_FOR_DROP_DOWN_OPERATION = "Fetch minimal active product details (id and name)";
+    }
+
+    public interface ProductSaleConstant {
+        String BASE_API_VALUE = "This is ProductSale Resource";
+        String SAVE_OPERATION = "Save new product sale";
+        String UPDATE_OPERATION = "Update existing  product sale details";
+        String DELETE_OPERATION = "Set  product sale status as 'D' with specific remarks";
+        String SEARCH_OPERATION = "Search  product sale according to given request parameters";
+        String DETAILS_OPERATION = "Fetch  product sale details by its id";
+        String FETCH_DETAILS_FOR_DROPDOWN = "Fetch minimal  product sale details (id and name) for dropdown";
+        String FETCH_ProductSale_FOR_DROP_DOWN_OPERATION = "Fetch minimal  product sale details (id and name) for dropdown";
+        String FETCH_ACTIVE_ProductSale_FOR_DROP_DOWN_OPERATION = "Fetch minimal active  product sale details (id and name)";
     }
 
     //S

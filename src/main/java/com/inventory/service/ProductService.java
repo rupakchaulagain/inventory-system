@@ -29,4 +29,6 @@ public interface ProductService {
     List<DropDownResponseDTO> fetchProductForDropdown();
     
     List<DropDownResponseDTO> fetchActiveDropDownList();
+
+    List<DropDownResponseDTO> fetchProductListByProductCategory(Long productCategoryId);
 }

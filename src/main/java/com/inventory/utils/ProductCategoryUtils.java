@@ -1,4 +1,4 @@
-package com.inventory.utils.ProductCategory;
+package com.inventory.utils;
 
 import com.inventory.dto.request.productCategory.ProductCategoryRequestDTO;
 import com.inventory.model.ProductCategory;

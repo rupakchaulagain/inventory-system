@@ -1,4 +1,4 @@
-package com.inventory.utils.Product;
+package com.inventory.utils;
 
 import com.inventory.dto.request.product.ProductRequestDTO;
 import com.inventory.model.Product;

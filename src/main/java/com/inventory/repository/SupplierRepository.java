@@ -9,6 +9,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface SupplierRepository extends JpaRepository<com.inventory.model.Supplier,Long>,
         SupplierRepositoryCustom {
@@ -16,4 +18,6 @@ public interface SupplierRepository extends JpaRepository<com.inventory.model.Su
     @Query("SELECT s FROM Supplier s WHERE s.id=:id AND s.status='Y'")
     com.inventory.model.Supplier findSupplierBySupplierId(@Param("id") Long supplierId);
 
+    @Query("SELECT COUNT(s.id) FROM Supplier s WHERE s.name=:name AND s.panNumber=:panNumber AND s.status='Y'")
+    Long validateDuplicityBySupplierNameAndPan(@Param("name")String supplierName, @Param("panNumber") String panNumber);
 }

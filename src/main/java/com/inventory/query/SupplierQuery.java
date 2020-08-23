@@ -19,6 +19,17 @@ public class SupplierQuery {
                     " WHERE s.status != 'D'" +
                     " ORDER BY s.name ASC";
 
+    public final static String QUERY_TO_FETCH_DETAILS =
+            "SELECT" +
+                    " s.name as supplierName," +
+                    " s.panNumber as supplierPanNumber," +
+                    " s.address as supplierAddress," +
+                    " s.phoneNumber as supplierPhoneNumber," +
+                    " s.websiteUrl as websiteUrl," +
+                    " s.status as status"+
+                    " FROM Supplier s" +
+                    " WHERE s.id =:supplierId";
+
 
     public static Function<SupplierSearchRequestDTO, String> QUERY_TO_SEARCH_SUPPLIER = (searchRequestDTO) -> {
         return " SELECT" +

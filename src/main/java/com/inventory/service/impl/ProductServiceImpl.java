@@ -26,8 +26,8 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import static com.inventory.constants.ErrorMessageConstants.NAME_DUPLICATION_MESSAGE;
-import static com.inventory.utils.Product.ProductUtils.parseToProduct;
-import static com.inventory.utils.Product.ProductUtils.parseToProductPrice;
+import static com.inventory.utils.ProductUtils.parseToProduct;
+import static com.inventory.utils.ProductUtils.parseToProductPrice;
 
 /**
  * @author Rupak
@@ -131,6 +131,19 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<DropDownResponseDTO> fetchActiveDropDownList() {
         return null;
+    }
+
+    @Override
+    public List<DropDownResponseDTO> fetchProductListByProductCategory(Long productCategoryId) {
+
+        ProductCategory productCategory = productCategoryRepository.
+                findProductCategoryById(productCategoryId)
+                .orElseThrow(() -> PRODUCT_CATEGORY_NOT_FOUND.get());
+
+        List<DropDownResponseDTO> departmentDropDownDTOS = productRepository.fetchProductListByProductCategory(productCategoryId)
+                .orElseThrow(() -> PRODUCT_NOT_FOUND.get());
+
+        return departmentDropDownDTOS;
     }
 
     private Supplier<NoContentFoundException> PRODUCT_NOT_FOUND = () ->

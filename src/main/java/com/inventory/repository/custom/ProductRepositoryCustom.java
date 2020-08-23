@@ -26,4 +26,6 @@ public interface ProductRepositoryCustom {
     ProductResponseDTO fetchDetails(Long id);
 
     ProductSearchResponseDTO search(ProductSearchRequestDTO requestDTO, Pageable pageable);
+
+    Optional<List<DropDownResponseDTO>> fetchProductListByProductCategory(Long productCategoryId);
 }

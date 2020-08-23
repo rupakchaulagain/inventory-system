@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,6 +21,7 @@ import static com.inventory.constants.SwaggerConstants.SupplierConstant.BASE_API
 import static com.inventory.constants.SwaggerConstants.SupplierConstant.SAVE_OPERATION;
 import static com.inventory.constants.WebResourceKeyConstants.*;
 import static com.inventory.constants.WebResourceKeyConstants.SupplierConstant.BASE_SUPPLIER;
+import static org.springframework.http.ResponseEntity.created;
 import static org.springframework.http.ResponseEntity.ok;
 
 /**
@@ -40,11 +42,7 @@ public class SupplierController {
     @ApiOperation(SAVE_OPERATION)
     public ResponseEntity<?> save(@Valid @RequestBody SupplierRequestDTO requestDTO) {
         supplierService.save(requestDTO);
-//        return created(URI.create(API_V1 + BASE_SUPPLIER)).build();
-
-        Map<String, String> m = new HashMap<>();
-        m.put("key", "Saved successfully");
-        return ok(m);
+        return created(URI.create(API_V1 + BASE_SUPPLIER)).build();
     }
 
     @DeleteMapping
@@ -52,6 +50,12 @@ public class SupplierController {
     public ResponseEntity<?> delete( @RequestBody DeleteRequestDTO deleteRequestDTO) {
         supplierService.delete(deleteRequestDTO);
         return ok().build();
+    }
+
+    @GetMapping(DETAIL + ID_PATH_VARIABLE_BASE)
+    @ApiOperation(DETAILS_OPERATION)
+    public ResponseEntity<?> fetchSupplierDetails(@PathVariable("id") Long id) {
+        return ok(supplierService.fetchDetails(id));
     }
 
 

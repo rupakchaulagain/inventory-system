@@ -5,6 +5,7 @@ import com.inventory.dto.commons.DropDownResponseDTO;
 import com.inventory.dto.request.supplier.SupplierRequestDTO;
 import com.inventory.dto.request.supplier.SupplierSearchRequestDTO;
 import com.inventory.dto.response.supplier.SupplierMinimalResponseDTO;
+import com.inventory.dto.response.supplier.SupplierResponseDTO;
 import com.inventory.dto.response.supplier.SupplierSearchResponseDTO;
 import org.springframework.data.domain.Pageable;
 
@@ -19,4 +20,6 @@ public interface SupplierService {
     List<DropDownResponseDTO> fetchActiveDropDownList();
 
     void delete(DeleteRequestDTO deleteRequestDTO);
+
+    SupplierResponseDTO fetchDetails(Long id);
 }

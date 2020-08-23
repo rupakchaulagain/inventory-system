@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static com.inventory.utils.ProductCategory.ProductCategoryUtils.parseToProductCategory;
+import static com.inventory.utils.ProductCategoryUtils.parseToProductCategory;
 
 /**
  * @author rupak ON 2020/07/23-8:20 PM

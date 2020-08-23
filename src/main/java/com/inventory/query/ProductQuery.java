@@ -25,13 +25,15 @@ public class ProductQuery {
 
     public final static String QUERY_TO_FETCH_DETAILS =
             "SELECT" +
-                    " p.productName as productName," +              //[0]
+                    " p.id as id," +
+                    " p.productName as productName," +
                     " pc.name as productCategory," +
                     " p.productCode as productCode," +              //[1]
                     " price.costPrice as costPrice," +              //[2]
                     " price.sellingPrice as sellingPrice," +         //[3]
+                    " price.discountAmount as discountAmount," +         //[3]
                     " p.productDescription as productDescription," + //[4]
-                    " p.status as status"+
+                    " p.status as status" +
                     " FROM Product p" +
                     " LEFT JOIN ProductPrice price ON price.id =p.productPrice.id" +
                     " LEFT JOIN ProductCategory pc ON pc.id=p.productCategoryId.id" +
@@ -54,6 +56,16 @@ public class ProductQuery {
                     " FROM Product p" +
                     " WHERE p.status = 'Y'" +
                     " ORDER BY p.id ASC";
+    public static final String QUERY_TO_FETCH_PRODUCT_BY_CATEGORY_FOR_DROPDOWN =
+            "SELECT" +
+                    " p.id as value," +
+                    " p.productName as label" +
+                    " FROM Product p" +
+                    " LEFT JOIN ProductCategory pc ON pc.id=p.productCategoryId.id" +
+                    " WHERE p.status = 'Y'" +
+                    " AND pc.status = 'Y'" +
+                    " AND pc.id=:productCategoryId" +
+                    " ORDER BY p.productName ASC";
 
     public static Function<ProductSearchRequestDTO, String> QUERY_TO_SEARCH_PRODUCT = (searchRequestDTO) -> {
         return " SELECT " +
@@ -74,7 +86,7 @@ public class ProductQuery {
 
     private static String GET_WHERE_CLAUSE_FOR_SEARCH_PRODUCT(ProductSearchRequestDTO searchRequestDTO) {
         String whereClause = " WHERE" +
-                " p.status!='D'"+
+                " p.status!='D'" +
                 " AND pc.status!='D'";
 
         if (!StringUtils.isEmpty(searchRequestDTO.getProductName()))

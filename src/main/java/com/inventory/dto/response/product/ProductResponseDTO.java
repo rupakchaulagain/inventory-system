@@ -15,6 +15,8 @@ import java.util.List;
 @Builder
 public class ProductResponseDTO implements Serializable {
 
+    private Long id;
+
     private String productName;
 
     private String productCategory;
@@ -26,6 +28,8 @@ public class ProductResponseDTO implements Serializable {
     private Double costPrice;
 
     private Double sellingPrice;
+
+    private Double discountAmount;
 
     private String productDescription;
 

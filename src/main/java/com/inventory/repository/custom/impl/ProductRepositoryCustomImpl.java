@@ -8,6 +8,7 @@ import com.inventory.dto.response.product.ProductResponseDTO;
 import com.inventory.dto.response.product.ProductSearchResponseDTO;
 import com.inventory.exception.NoContentFoundException;
 import com.inventory.model.Product;
+import com.inventory.query.ProductQuery;
 import com.inventory.repository.custom.ProductRepositoryCustom;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
@@ -93,6 +94,16 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
         productResponseDTO.setResponseDTOList(minimalResponseDTOS);
 
         return productResponseDTO;
+    }
+
+    @Override
+    public Optional<List<DropDownResponseDTO>> fetchProductListByProductCategory(Long productCategoryId) {
+        Query query = createQuery.apply(entityManager, ProductQuery.QUERY_TO_FETCH_PRODUCT_BY_CATEGORY_FOR_DROPDOWN)
+                .setParameter(PRODUCT_CATEGORY_ID,productCategoryId);
+
+        List<DropDownResponseDTO> dropDownDTOS = transformQueryToResultList(query, DropDownResponseDTO.class);
+
+        return dropDownDTOS.isEmpty() ? Optional.empty() : Optional.of(dropDownDTOS);
     }
 
     private Supplier<NoContentFoundException> PRODUCT_NOT_FOUND = () -> {

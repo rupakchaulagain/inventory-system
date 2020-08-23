@@ -1,4 +1,4 @@
-package com.inventory.utils.Supplier;
+package com.inventory.utils;
 
 import com.inventory.constants.StatusConstants;
 import com.inventory.dto.request.supplier.SupplierRequestDTO;

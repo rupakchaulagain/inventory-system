@@ -76,6 +76,12 @@ public class WebResourceKeyConstants {
         String BASE_PRODUCT_CATEGORY = "/product-category";
     }
 
+    public static final String PRODUCT_CATEGORY_ID_PATH_VARIABLE_BASE = "/{productCategoryId}";
+
+    public interface ProductSaleConstant {
+        String BASE_PRODUCT_SALE = "/product-sale";
+    }
+
     //Q
 
 
