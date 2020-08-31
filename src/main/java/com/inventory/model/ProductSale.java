@@ -17,39 +17,30 @@ import java.util.Date;
 @Table(name = "product_sale")
 public class ProductSale {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
-    private Product productId;
+    @JoinColumn(name = "sale_id")
+    private Sale saleId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "supplier_id")
     private Supplier supplierId;
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "sale_date")
-    private Date saleDate;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "sale_time")
-    private Date saleTime;
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id")
+    private Product productId;
 
     @Column(name = "selling_price")
     private Double sellingPrice;
 
     @Column(name = "discount_amount")
-    private Double totalAmount;
+    private Double discountAmount;
 
     @Column(name = "status")
     private Character status;
-
-    @Column(name = "remarks")
-    private String remarks;
 
 }
 
