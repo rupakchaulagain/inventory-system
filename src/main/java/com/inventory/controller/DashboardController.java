@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import static com.inventory.constants.SwaggerConstants.ProductConstant.BASE_API_VALUE;
 import static com.inventory.constants.SwaggerConstants.ProductConstant.FETCH_PRODUCT_FOR_DROP_DOWN_OPERATION;
 import static com.inventory.constants.WebResourceKeyConstants.API_V1;
-import static com.inventory.constants.WebResourceKeyConstants.DashboardConstant.BASE_DASHBOARD;
-import static com.inventory.constants.WebResourceKeyConstants.DashboardConstant.TILES_STATICS;
+import static com.inventory.constants.WebResourceKeyConstants.DashboardConstant.*;
 import static org.springframework.http.ResponseEntity.ok;
 
 /**
@@ -33,6 +32,12 @@ public class DashboardController {
     @ApiOperation(FETCH_PRODUCT_FOR_DROP_DOWN_OPERATION)
     public ResponseEntity<?> fetchDashboardTiles() {
         return ok(dashboardService.fetchDashboardTiles());
+    }
+
+    @GetMapping(DAILY_REVENUE_STATICS)
+    @ApiOperation(FETCH_PRODUCT_FOR_DROP_DOWN_OPERATION)
+    public ResponseEntity<?> fetchTrafficAndSalesStatics() {
+        return ok(dashboardService.fetchTrafficAndSalesStatics());
     }
 
 

@@ -26,6 +26,9 @@ public class Sale {
     @Column(name = "sale_time")
     private Date saleTime;
 
+    @Column(name = "total_quantity")
+    private Long totalQuantity;
+
     @Column(name = "total_amount")
     private Double totalAmount;
 

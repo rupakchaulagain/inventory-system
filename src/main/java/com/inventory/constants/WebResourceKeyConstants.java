@@ -23,6 +23,7 @@ public class WebResourceKeyConstants {
     public interface DashboardConstant {
         String BASE_DASHBOARD = "/dashboard";
         String TILES_STATICS = "/tiles";
+        String DAILY_REVENUE_STATICS = "/dailyRevenue";
     }
 
 

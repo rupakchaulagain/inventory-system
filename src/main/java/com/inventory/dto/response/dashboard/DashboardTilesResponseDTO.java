@@ -17,4 +17,6 @@ public class DashboardTilesResponseDTO implements Serializable {
 
     private Long supplierNumber;
 
+    private Double totalRevenue;
+
 }

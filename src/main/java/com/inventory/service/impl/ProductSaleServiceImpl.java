@@ -3,16 +3,18 @@ package com.inventory.service.impl;
 import com.inventory.constants.StatusConstants;
 import com.inventory.dto.request.productSale.ProductSaleRequestDTO;
 import com.inventory.dto.request.productSale.ProductToSaleRequestDTO;
+import com.inventory.dto.request.productSale.SaleSearchRequestDTO;
+import com.inventory.dto.response.productSale.ProductSaleSearchResponseDTO;
 import com.inventory.model.Product;
 import com.inventory.model.ProductSale;
 import com.inventory.model.Sale;
-import com.inventory.model.Supplier;
 import com.inventory.repository.ProductRepository;
 import com.inventory.repository.ProductSaleRepository;
 import com.inventory.repository.SaleRepository;
 import com.inventory.repository.SupplierRepository;
 import com.inventory.service.ProductSaleService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,6 +49,7 @@ public class ProductSaleServiceImpl implements ProductSaleService {
     public void save(ProductSaleRequestDTO requestDTO) {
 
         List<ProductToSaleRequestDTO> productToSaleList = requestDTO.getProductList();
+        Long  number= Long.valueOf(productToSaleList.size());
 
         List<ProductSale> productSaleList = new ArrayList<>();
         AtomicReference<Double> totalAmount = new AtomicReference<>(0D);
@@ -56,6 +59,7 @@ public class ProductSaleServiceImpl implements ProductSaleService {
                 .saleDate(new Date())
                 .saleTime(new Date())
                 .totalAmount(requestDTO.getTotalAmount())
+                .totalQuantity(number)
                 .remarks("Sale")
                 .status(StatusConstants.ACTIVE)
                 .build();
@@ -85,5 +89,12 @@ public class ProductSaleServiceImpl implements ProductSaleService {
         productSaleRepository.saveAll(productSaleList);
 
 
+    }
+
+    @Override
+    public ProductSaleSearchResponseDTO search(SaleSearchRequestDTO requestDTO, Pageable pageable) {
+        ProductSaleSearchResponseDTO responseDTOList = productSaleRepository.search(requestDTO, pageable);
+
+        return responseDTOList;
     }
 }

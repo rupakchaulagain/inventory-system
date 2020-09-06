@@ -16,4 +16,6 @@ public class InventoryApplication {
 	public BeanUtil beanUtil() {
 		return new BeanUtil();
 	}
+
+
 }

@@ -10,9 +10,8 @@ public class QueryConstants {
 
     //C
 
-
     //D
-
+    public static final String CURRENT_DATE = "currentDate";
 
     //E
     public static final String EMAIL = "email";
