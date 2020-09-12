@@ -20,7 +20,7 @@ public class ProductMinimalResponseDTO implements Serializable {
 
     private String productType;
 
-    private String productQuantity;
+    private Long productQuantity;
 
     private Double costPrice;
 

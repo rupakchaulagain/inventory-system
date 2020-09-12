@@ -36,7 +36,7 @@ public class Product extends Auditable<String> implements Serializable {
     private String productCode;
 
     @Column(name = "product_quantity", nullable = false)
-    private String productQuantity;
+    private Long productQuantity;
 
     @Column(name = "product_description", nullable = false)
     private String productDescription;

@@ -31,7 +31,7 @@ public class ProductRequestDTO implements Serializable {
 
     @NotNull
     @NotEmpty
-    private String productQuantity;
+    private Long productQuantity;
 
     @NotNull
     private String productCostPrice;

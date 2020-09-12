@@ -11,7 +11,7 @@ import java.util.Optional;
 @Repository
 public interface DashboardRepository extends JpaRepository<Product,Long>, DashboardRepositoryCustom {
 
-    @Query("Select COUNT(p.id) FROM Product p WHERE p.status='Y'")
+    @Query("Select SUM(p.productQuantity) FROM Product p WHERE p.status='Y'")
     Optional<Long> findNumberOfActiveProducts();
 
     @Query("Select COUNT(s.id) FROM Supplier s WHERE s.status='Y'")

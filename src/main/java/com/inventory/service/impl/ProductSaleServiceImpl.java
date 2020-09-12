@@ -69,6 +69,7 @@ public class ProductSaleServiceImpl implements ProductSaleService {
         productToSaleList.forEach(productToSale -> {
 
             Product product = productRepository.findProductById(productToSale.getProductId());
+            product.setProductQuantity(product.getProductQuantity()-productToSale.getProductQuantity());
 
             ProductSale productSale = ProductSale.builder()
                     .supplierId( product.getSupplier())
